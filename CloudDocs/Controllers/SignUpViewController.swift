@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest!.displayName = self.nameTextField.text!
                 changeRequest!.commitChanges()
-                self.performSegue(withIdentifier: "SignUpToHome", sender: self)
+                self.performSegue(withIdentifier: "SignUpToPasscode", sender: self)
             }
         }
     }

@@ -41,7 +41,7 @@ class SignInViewController: UIViewController {
         
         if !isEmptyFields() {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                self!.performSegue(withIdentifier: "SignInToHome", sender: self)
+                self!.performSegue(withIdentifier: "SignInToPasscode", sender: self)
             }
         }
     }

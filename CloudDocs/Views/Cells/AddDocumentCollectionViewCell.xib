@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddDocumentCollectionViewCell" id="gTV-IL-0wX" customClass="AddDocumentCollectionViewCell" customModule="CloudDocs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fu-Iz-zAR">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Oqv-hq-H5y">
+                                <rect key="frame" x="0.0" y="2" width="150" height="146"/>
+                                <color key="tintColor" name="AddDocumentColor"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="AddDocumentBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Oqv-hq-H5y" secondAttribute="bottom" id="Fgq-wo-tB0"/>
+                            <constraint firstAttribute="trailing" secondItem="Oqv-hq-H5y" secondAttribute="trailing" id="MFQ-hw-Dzz"/>
+                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="top" secondItem="7Fu-Iz-zAR" secondAttribute="top" id="Nhw-Qx-erG"/>
+                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="leading" secondItem="7Fu-Iz-zAR" secondAttribute="leading" id="OWr-ef-7LE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="7Fu-Iz-zAR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3rw-hk-Q3Q"/>
+                <constraint firstAttribute="bottom" secondItem="7Fu-Iz-zAR" secondAttribute="bottom" id="3yw-Sc-YBd"/>
+                <constraint firstAttribute="trailing" secondItem="7Fu-Iz-zAR" secondAttribute="trailing" id="4Ps-Mq-AOe"/>
+                <constraint firstItem="7Fu-Iz-zAR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JZS-kt-G3L"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="AddDocumentBackgroundColor">
+            <color red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AddDocumentColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
