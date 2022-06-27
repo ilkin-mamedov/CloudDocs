@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AZs-Rm-LGu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -10,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,6 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="kip-TM-rcw">
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -53,11 +53,89 @@
                     <connections>
                         <outlet property="documentsCollectionView" destination="oxj-Oc-mFC" id="jnf-Pj-F8o"/>
                         <segue destination="AZs-Rm-LGu" kind="presentation" identifier="HomeToWelcome" modalPresentationStyle="fullScreen" id="hJ2-Po-ojv"/>
+                        <segue destination="CfA-OQ-grr" kind="presentation" identifier="HomeToNewDocument" id="wnN-DC-2EX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97" y="759"/>
+            <point key="canvasLocation" x="-151" y="758"/>
+        </scene>
+        <!--New Document View Controller-->
+        <scene sceneID="fGF-CH-Yko">
+            <objects>
+                <viewController id="pjq-zs-a9I" customClass="NewDocumentViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XTX-U9-nVH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JQO-Or-H61">
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pIC-qK-Dvh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JQO-Or-H61" firstAttribute="trailing" secondItem="pIC-qK-Dvh" secondAttribute="trailing" id="HEA-lA-1iV"/>
+                            <constraint firstItem="JQO-Or-H61" firstAttribute="top" secondItem="pIC-qK-Dvh" secondAttribute="top" id="QKm-MI-dva"/>
+                            <constraint firstAttribute="bottom" secondItem="JQO-Or-H61" secondAttribute="bottom" id="Sh0-7c-am2"/>
+                            <constraint firstItem="JQO-Or-H61" firstAttribute="leading" secondItem="pIC-qK-Dvh" secondAttribute="leading" id="yIX-Sn-wiG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SBX-8R-CAn">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9vw-Vy-s0O">
+                            <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="pjq-zs-a9I" id="MHZ-bm-wRb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newDocumentTableView" destination="JQO-Or-H61" id="kDD-B9-qid"/>
+                        <segue destination="zgm-qk-bYn" kind="show" identifier="NewDocumentToAddDocument" id="NcP-TW-p6A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQ7-hR-yap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="755"/>
+        </scene>
+        <!--Add Document View Controller-->
+        <scene sceneID="5hq-3e-LTT">
+            <objects>
+                <viewController id="zgm-qk-bYn" customClass="AddDocumentViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uQK-4c-ihF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="51l-4I-5Ci">
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ey7-TE-urF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="51l-4I-5Ci" firstAttribute="top" secondItem="Ey7-TE-urF" secondAttribute="top" id="JHa-i4-C2g"/>
+                            <constraint firstAttribute="bottom" secondItem="51l-4I-5Ci" secondAttribute="bottom" id="Os0-ZZ-YEP"/>
+                            <constraint firstItem="51l-4I-5Ci" firstAttribute="trailing" secondItem="Ey7-TE-urF" secondAttribute="trailing" id="cLG-BO-rpW"/>
+                            <constraint firstItem="51l-4I-5Ci" firstAttribute="leading" secondItem="Ey7-TE-urF" secondAttribute="leading" id="rUQ-O0-2KD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OqD-Qo-jYp">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="9ud-YJ-QeP">
+                            <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="addPressed:" destination="zgm-qk-bYn" id="FGp-Sm-yGk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="documentFieldsTableView" destination="51l-4I-5Ci" id="jb4-mp-0Yo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2f-AZ-6NC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115.9420289855075" y="754.6875"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="aBf-II-zyN">
@@ -360,41 +438,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="vge-Iu-xzM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your passcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-b2-fYe">
-                                <rect key="frame" x="68.5" y="88" width="277.5" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-b2-fYe">
+                                <rect key="frame" x="207" y="88" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-CY-79c">
-                                <rect key="frame" x="162" y="140" width="90" height="60"/>
+                                <rect key="frame" x="162" y="118" width="90" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ON-Ha-4KB">
                                         <rect key="frame" x="0.0" y="0.0" width="22.5" height="60"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-WG-wcO">
                                         <rect key="frame" x="22.5" y="0.0" width="22.5" height="60"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7f-pN-7CS">
                                         <rect key="frame" x="45" y="0.0" width="22.5" height="60"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sp-0a-bF5">
                                         <rect key="frame" x="67.5" y="0.0" width="22.5" height="60"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -407,16 +481,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLA-6t-EcF">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="1">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="1">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="8BY-a4-cRP"/>
@@ -424,17 +492,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODQ-lT-ybm">
                                                 <rect key="frame" x="127.5" y="0.0" width="127" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="2">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="2">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="MY8-dZ-FLc"/>
@@ -442,17 +503,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taE-Pg-72P">
                                                 <rect key="frame" x="254.5" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="3">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="3">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="IiH-MC-FOi"/>
@@ -465,17 +519,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjJ-cr-69V">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="4">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="4">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="WLZ-Xv-XZ7"/>
@@ -483,17 +530,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHZ-UP-1hM">
                                                 <rect key="frame" x="127.5" y="0.0" width="127" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="5">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="5">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="G5l-g2-Rz4"/>
@@ -501,17 +541,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnQ-wN-815">
                                                 <rect key="frame" x="254.5" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="6">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="6">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="hGj-Dx-7LM"/>
@@ -524,17 +557,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwD-w4-CYU">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="7">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="7">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="DmT-Xx-tSh"/>
@@ -542,17 +568,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8o-SP-fCV">
                                                 <rect key="frame" x="127.5" y="0.0" width="127" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="8">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="8">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="EI6-11-Pmz"/>
@@ -560,17 +579,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hws-gn-bJ8">
                                                 <rect key="frame" x="254.5" y="0.0" width="127.5" height="74"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="9">
-                                                            <attributes>
-                                                                <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <buttonConfiguration key="configuration" style="plain" title="9">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="Hdq-Ae-Wu8"/>
@@ -580,17 +592,10 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQS-ya-rJO">
                                         <rect key="frame" x="0.0" y="222" width="382" height="74"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="0">
-                                                    <attributes>
-                                                        <font key="NSFont" size="50" name="AppleSDGothicNeo-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <buttonConfiguration key="configuration" style="plain" title="0">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="numberPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="qV7-vq-5w7"/>
@@ -598,6 +603,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd0-g9-EUo">
+                                <rect key="frame" x="179" y="790" width="56" height="56"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="BcP-xY-8aQ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="drO-l2-JcD"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="clearPressed:" destination="K3V-zu-pyk" eventType="touchUpInside" id="5nh-7y-j1G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Esh-IK-jvv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -605,7 +624,9 @@
                             <constraint firstItem="cud-b2-fYe" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="4vw-JY-7OJ"/>
                             <constraint firstItem="YE2-UH-ADZ" firstAttribute="centerY" secondItem="6sv-Pd-yVU" secondAttribute="centerY" id="CnH-KH-XoL"/>
                             <constraint firstItem="YE2-UH-ADZ" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="LtA-Az-2Y3"/>
-                            <constraint firstItem="EGr-CY-79c" firstAttribute="top" secondItem="cud-b2-fYe" secondAttribute="bottom" constant="16" id="YBv-Qo-Mc3"/>
+                            <constraint firstItem="pd0-g9-EUo" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="NaF-cV-7Dv"/>
+                            <constraint firstItem="Esh-IK-jvv" firstAttribute="bottom" secondItem="pd0-g9-EUo" secondAttribute="bottom" constant="16" id="Pmk-Zz-v7M"/>
+                            <constraint firstItem="EGr-CY-79c" firstAttribute="top" secondItem="cud-b2-fYe" secondAttribute="bottom" constant="30" id="YBv-Qo-Mc3"/>
                             <constraint firstItem="Esh-IK-jvv" firstAttribute="trailing" secondItem="YE2-UH-ADZ" secondAttribute="trailing" constant="16" id="cJ6-CD-9fk"/>
                             <constraint firstItem="EGr-CY-79c" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="egZ-K8-jPK"/>
                             <constraint firstItem="YE2-UH-ADZ" firstAttribute="leading" secondItem="Esh-IK-jvv" secondAttribute="leading" constant="16" id="geI-ht-FFe"/>
@@ -614,6 +635,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dUU-93-YYM"/>
                     <connections>
+                        <outlet property="clearButton" destination="pd0-g9-EUo" id="fFe-OO-LZN"/>
                         <outlet property="eightNumberButton" destination="m8o-SP-fCV" id="ds9-hs-HIQ"/>
                         <outlet property="firstPoint" destination="9ON-Ha-4KB" id="Q4V-H4-hs8"/>
                         <outlet property="fiveNumberButton" destination="LHZ-UP-1hM" id="jJL-JP-5BH"/>
@@ -634,7 +656,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGA-rW-iOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1610.144927536232" y="757.36607142857144"/>
+            <point key="canvasLocation" x="-1664" y="757"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wAf-Dh-kn9">
@@ -653,7 +675,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YrK-b6-fu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-832" y="759"/>
+            <point key="canvasLocation" x="-887" y="758"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Kb-PW-iRx">
@@ -691,20 +713,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anH-uf-9NA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2332" y="757"/>
+            <point key="canvasLocation" x="-2387" y="756"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZYK-zm-2YE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CfA-OQ-grr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="02s-VS-7fK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pjq-zs-a9I" kind="relationship" relationship="rootViewController" id="9oy-v3-qmp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Px8-en-eRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="584" y="755"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5mu-xm-89z"/>
+        <segue reference="Clf-s7-Iap"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="333" height="333"/>
         <image name="Logo" width="333" height="333"/>
         <image name="WelcomeImage" width="1333" height="2000"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
-            <color red="0.2196078431372549" green="0.38431372549019605" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2199999988079071" green="0.38400000333786011" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="PointColor">
+            <color red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
