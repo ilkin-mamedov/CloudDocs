@@ -29,6 +29,11 @@
 		3BA4D42328693038002162F1 /* AddPhotoButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4D42128693038002162F1 /* AddPhotoButtonTableViewCell.xib */; };
 		3BA4D426286935E0002162F1 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */; };
 		3BA4D427286935E0002162F1 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */; };
+		3BA4D42A2869E301002162F1 /* DocumentField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4292869E301002162F1 /* DocumentField.swift */; };
+		3BA4D42C2869E31D002162F1 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42B2869E31D002162F1 /* DocumentType.swift */; };
+		3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42D2869E343002162F1 /* NewDocument.swift */; };
+		3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */; };
+		3BA4D4342869FF84002162F1 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4332869FF84002162F1 /* DocumentViewController.swift */; };
 		86405352A3C2A733C3284E42 /* Pods_CloudDocs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C35C093A442652C793C2F74 /* Pods_CloudDocs.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +63,11 @@
 		3BA4D42128693038002162F1 /* AddPhotoButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoButtonTableViewCell.xib; sourceTree = "<group>"; };
 		3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentCollectionViewCell.xib; sourceTree = "<group>"; };
+		3BA4D4292869E301002162F1 /* DocumentField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentField.swift; sourceTree = "<group>"; };
+		3BA4D42B2869E31D002162F1 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		3BA4D42D2869E343002162F1 /* NewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocument.swift; sourceTree = "<group>"; };
+		3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataSource.swift; sourceTree = "<group>"; };
+		3BA4D4332869FF84002162F1 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		60CEE72B43EBB935D336538A /* Pods-CloudDocs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudDocs.release.xcconfig"; path = "Target Support Files/Pods-CloudDocs/Pods-CloudDocs.release.xcconfig"; sourceTree = "<group>"; };
 		9C35C093A442652C793C2F74 /* Pods_CloudDocs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudDocs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA7073F2B3C4B396767DA55 /* Pods-CloudDocs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudDocs.debug.xcconfig"; path = "Target Support Files/Pods-CloudDocs/Pods-CloudDocs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,25 +116,16 @@
 			isa = PBXGroup;
 			children = (
 				3B306D962867622D0052CEE3 /* CloudDocs.entitlements */,
-				3B306D8328673F4F0052CEE3 /* Others */,
-				3B306D9B286779A70052CEE3 /* Managers */,
+				3B306D6F2867367C0052CEE3 /* AppDelegate.swift */,
+				3B306D712867367C0052CEE3 /* SceneDelegate.swift */,
 				3B306D8628673F660052CEE3 /* Models */,
 				3B306D8428673F570052CEE3 /* Views */,
 				3B306D8528673F5F0052CEE3 /* Controllers */,
 				3B306D7D2867367F0052CEE3 /* Info.plist */,
 				3B306D9228674A780052CEE3 /* GoogleService-Info.plist */,
-			);
-			path = CloudDocs;
-			sourceTree = "<group>";
-		};
-		3B306D8328673F4F0052CEE3 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				3B306D6F2867367C0052CEE3 /* AppDelegate.swift */,
-				3B306D712867367C0052CEE3 /* SceneDelegate.swift */,
 				3B306D782867367F0052CEE3 /* Assets.xcassets */,
 			);
-			path = Others;
+			path = CloudDocs;
 			sourceTree = "<group>";
 		};
 		3B306D8428673F570052CEE3 /* Views */ = {
@@ -140,11 +141,10 @@
 		3B306D8528673F5F0052CEE3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4D4282869E294002162F1 /* Document */,
 				3B628A6B2868B10800B01318 /* Auth */,
 				3B628A642868770700B01318 /* PasscodeViewController.swift */,
 				3B306D732867367C0052CEE3 /* HomeViewController.swift */,
-				3B628A6C2868B19B00B01318 /* NewDocumentViewController.swift */,
-				3B902CC12868DD150004900C /* AddDocumentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,15 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				3BA4D41E28692AD8002162F1 /* Document.swift */,
+				3BA4D42B2869E31D002162F1 /* DocumentType.swift */,
+				3BA4D4292869E301002162F1 /* DocumentField.swift */,
+				3BA4D42D2869E343002162F1 /* NewDocument.swift */,
+				3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3B306D9B286779A70052CEE3 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		3B628A662868984F00B01318 /* Cells */ = {
@@ -187,6 +184,16 @@
 				3B306D9928676B840052CEE3 /* SignInViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		3BA4D4282869E294002162F1 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				3B628A6C2868B19B00B01318 /* NewDocumentViewController.swift */,
+				3B902CC12868DD150004900C /* AddDocumentViewController.swift */,
+				3BA4D4332869FF84002162F1 /* DocumentViewController.swift */,
+			);
+			path = Document;
 			sourceTree = "<group>";
 		};
 		847FA11749AC66219B60F4EB /* Frameworks */ = {
@@ -322,15 +329,20 @@
 				3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */,
 				3B306D702867367C0052CEE3 /* AppDelegate.swift in Sources */,
 				3B628A652868770700B01318 /* PasscodeViewController.swift in Sources */,
+				3BA4D42A2869E301002162F1 /* DocumentField.swift in Sources */,
 				3B628A702868B29800B01318 /* NewDocumentTableViewCell.swift in Sources */,
+				3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */,
 				3B628A692868987800B01318 /* AddDocumentCollectionViewCell.swift in Sources */,
 				3BA4D42228693038002162F1 /* AddPhotoButtonTableViewCell.swift in Sources */,
 				3BA4D426286935E0002162F1 /* DocumentCollectionViewCell.swift in Sources */,
 				3B306D722867367C0052CEE3 /* SceneDelegate.swift in Sources */,
+				3BA4D4342869FF84002162F1 /* DocumentViewController.swift in Sources */,
 				3B306D98286766440052CEE3 /* SignUpViewController.swift in Sources */,
 				3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */,
 				3B628A6D2868B19B00B01318 /* NewDocumentViewController.swift in Sources */,
+				3BA4D42C2869E31D002162F1 /* DocumentType.swift in Sources */,
 				3BA4D41F28692AD8002162F1 /* Document.swift in Sources */,
+				3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

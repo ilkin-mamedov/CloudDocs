@@ -2,6 +2,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import SPAlert
 
 class HomeViewController: UIViewController {
@@ -9,12 +10,19 @@ class HomeViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     var ref: DatabaseReference!
+    var storageRef: StorageReference!
     var user: User?
     
     var documents = [Document]()
     var filteredDocuments = [Document]()
     
+    var documentID = ""
+    
     @IBOutlet weak var documentsCollectionView: UICollectionView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        documentsCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +35,7 @@ class HomeViewController: UIViewController {
         navigationItem.searchController = searchController
         
         ref = Database.database().reference()
+        storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
         
         ref.child("users").child(user!.uid).child("documents").observe(.value, with: { snapshot in
@@ -109,6 +118,13 @@ class HomeViewController: UIViewController {
             alert.view.tintColor = UIColor(named: "AccentColor")
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeToDocument" {
+            let documentViewController = segue.destination as! DocumentViewController
+            documentViewController.id = documentID
+        }
+    }
 }
 
 extension HomeViewController: UISearchControllerDelegate, UISearchResultsUpdating {
@@ -171,12 +187,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if searchController.isActive && !searchController.searchBar.text!.isEmpty {
-            //...
+            documentID = filteredDocuments[indexPath.row].id
+            performSegue(withIdentifier: "HomeToDocument", sender: self)
         } else {
             if indexPath.row == 0 {
                 performSegue(withIdentifier: "HomeToNewDocument", sender: self)
             } else {
-                //...
+                documentID = documents[indexPath.row - 1].id
+                performSegue(withIdentifier: "HomeToDocument", sender: self)
             }
         }
     }
@@ -257,31 +275,47 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { action in
                 
-                let text = "Download the CloudDocs app to keep all your documents on your phone! Download now."
+                var imageRef: StorageReference!
                 
-                let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+                if searchIsActive {
+                    imageRef = self.storageRef.child("\(self.user!.uid)/documents/\(self.filteredDocuments[indexPath.row].id).png")
+                } else {
+                    imageRef = self.storageRef.child("\(self.user!.uid)/documents/\(self.documents[indexPath.row - 1].id).png")
+                }
                 
-                activityViewController.popoverPresentationController?.sourceView = self.view
-                
-                activityViewController.excludedActivityTypes = [
-                    .airDrop,
-                    .assignToContact,
-                    .message,
-                    .mail,
-                    .copyToPasteboard,
-                ]
-                
-                self.present(activityViewController, animated: true, completion: nil)
+                imageRef.getData(maxSize: 50 * 1024 * 1024) { data, error in
+                  if let error = error {
+                      print(error)
+                  } else {
+                      if let image = UIImage(data: data!) {
+                          let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                          
+                          activityViewController.popoverPresentationController?.sourceView = self.view
+                          
+                          activityViewController.excludedActivityTypes = [
+                              .airDrop,
+                              .assignToContact,
+                              .message,
+                              .mail,
+                              .copyToPasteboard,
+                          ]
+                          
+                          self.present(activityViewController, animated: true, completion: nil)
+                      }
+                  }
+                }
             }
             
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
                 if searchIsActive {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.filteredDocuments[indexPath.row].id).removeValue()
+                    self.storageRef!.child("\(self.user!.uid)/documents/\(self.filteredDocuments[indexPath.row].id).png").delete { _ in }
                     self.filteredDocuments.remove(at: indexPath.row)
                     self.documentsCollectionView.reloadData()
                 } else {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.documents[indexPath.row - 1].id).removeValue()
+                    self.storageRef!.child("\(self.user!.uid)/documents/\(self.documents[indexPath.row - 1].id).png").delete { _ in }
                     self.documents.remove(at: indexPath.row - 1)
                     self.documentsCollectionView.reloadData()
                 }

@@ -3,6 +3,8 @@ target 'CloudDocs' do
   
   pod 'FirebaseAuth'
   pod 'FirebaseDatabase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
   pod 'SPAlert'
   
 end

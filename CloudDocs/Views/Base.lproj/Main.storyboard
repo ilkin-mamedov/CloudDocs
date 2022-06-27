@@ -54,11 +54,50 @@
                         <outlet property="documentsCollectionView" destination="oxj-Oc-mFC" id="jnf-Pj-F8o"/>
                         <segue destination="AZs-Rm-LGu" kind="presentation" identifier="HomeToWelcome" modalPresentationStyle="fullScreen" id="hJ2-Po-ojv"/>
                         <segue destination="CfA-OQ-grr" kind="presentation" identifier="HomeToNewDocument" id="wnN-DC-2EX"/>
+                        <segue destination="LrJ-0E-Lb7" kind="show" identifier="HomeToDocument" id="r1b-pv-KfI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-151" y="758"/>
+        </scene>
+        <!--Document View Controller-->
+        <scene sceneID="pcc-dr-K2R">
+            <objects>
+                <viewController id="LrJ-0E-Lb7" customClass="DocumentViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jzn-35-R1w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="312-Pf-fBr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ikj-fH-TkG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="312-Pf-fBr" secondAttribute="bottom" id="2aL-jV-CCw"/>
+                            <constraint firstItem="312-Pf-fBr" firstAttribute="top" secondItem="Ikj-fH-TkG" secondAttribute="top" id="Afi-bz-pzZ"/>
+                            <constraint firstItem="312-Pf-fBr" firstAttribute="leading" secondItem="Ikj-fH-TkG" secondAttribute="leading" id="KAc-sa-PZg"/>
+                            <constraint firstItem="312-Pf-fBr" firstAttribute="trailing" secondItem="Ikj-fH-TkG" secondAttribute="trailing" id="nHA-MC-cH7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dY8-yE-fLn">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="XD0-9T-jjB">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="LrJ-0E-Lb7" id="D0H-nK-6UI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="documentFieldsTableView" destination="312-Pf-fBr" id="PFe-Vi-uan"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xrq-D0-I0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152.17391304347828" y="1443.75"/>
         </scene>
         <!--New Document View Controller-->
         <scene sceneID="fGF-CH-Yko">
@@ -747,13 +786,16 @@
             <color red="0.2199999988079071" green="0.38400000333786011" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PointColor">
-            <color red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
