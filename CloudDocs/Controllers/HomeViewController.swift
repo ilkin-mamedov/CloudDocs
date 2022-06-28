@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var documentsCollectionView: UICollectionView!
     
     override func viewDidAppear(_ animated: Bool) {
+        documents.sort { document1, document2 in
+            return document1.title < document2.title
+        }
         documentsCollectionView.reloadData()
     }
     
@@ -91,9 +94,12 @@ class HomeViewController: UIViewController {
                             title = name["Full name"] as? String ?? "Unknown"
                         }
                         self.documents.append(Document(id: id, type: type, title: title))
-                        self.documentsCollectionView.reloadData()
                     }
                 }
+                self.documents.sort { document1, document2 in
+                    return document1.title < document2.title
+                }
+                self.documentsCollectionView.reloadData()
             }
         }) { error in
           print(error.localizedDescription)
@@ -108,6 +114,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc func reload(notification: NSNotification) {
+        documents.sort { document1, document2 in
+            return document1.title < document2.title
+        }
         documentsCollectionView.reloadData()
     }
     

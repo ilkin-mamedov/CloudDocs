@@ -35,6 +35,9 @@ class DocumentViewController: UIViewController {
                     self.fields.append(DocumentField(title: item.key, subtitle: (item.value as! String)))
                 }
             }
+            self.fields.sort { field1, field2 in
+                return field1.title < field2.title
+            }
             self.documentFieldsTableView.reloadData()
         }
         
