@@ -42,14 +42,7 @@
                             <constraint firstAttribute="bottom" secondItem="oxj-Oc-mFC" secondAttribute="bottom" id="cmx-dl-RRc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eNE-Hu-4qn">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" image="rectangle.portrait.and.arrow.right" catalog="system" landscapeImage="rectangle.portrait.and.arrow.right" largeContentSizeImage="rectangle.portrait.and.arrow.right" id="2S6-75-wZF">
-                            <color key="tintColor" name="AccentColor"/>
-                            <connections>
-                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="3wp-Za-IQz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="eNE-Hu-4qn"/>
                     <connections>
                         <outlet property="documentsCollectionView" destination="oxj-Oc-mFC" id="jnf-Pj-F8o"/>
                         <segue destination="AZs-Rm-LGu" kind="presentation" identifier="HomeToWelcome" modalPresentationStyle="fullScreen" id="hJ2-Po-ojv"/>
@@ -477,40 +470,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-b2-fYe">
-                                <rect key="frame" x="207" y="88" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account" translatesAutoresizingMaskIntoConstraints="NO" id="vsS-sO-pAp">
+                                <rect key="frame" x="172" y="88" width="70" height="70"/>
+                                <color key="backgroundColor" name="AddDocumentBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="2rw-7j-CHr"/>
+                                    <constraint firstAttribute="height" constant="70" id="B9j-aj-jPD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-b2-fYe">
+                                <rect key="frame" x="180" y="174" width="54" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-CY-79c">
-                                <rect key="frame" x="162" y="118" width="90" height="60"/>
+                                <rect key="frame" x="162" y="198" width="90" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ON-Ha-4KB">
-                                        <rect key="frame" x="0.0" y="0.0" width="22.5" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22.5" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-WG-wcO">
-                                        <rect key="frame" x="22.5" y="0.0" width="22.5" height="60"/>
+                                        <rect key="frame" x="22.5" y="0.0" width="22.5" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7f-pN-7CS">
-                                        <rect key="frame" x="45" y="0.0" width="22.5" height="60"/>
+                                        <rect key="frame" x="45" y="0.0" width="22.5" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sp-0a-bF5">
-                                        <rect key="frame" x="67.5" y="0.0" width="22.5" height="60"/>
+                                        <rect key="frame" x="67.5" y="0.0" width="22.5" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         <color key="textColor" name="PointColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xbh-DU-xEK"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YE2-UH-ADZ">
                                 <rect key="frame" x="16" y="300" width="382" height="296"/>
@@ -665,15 +669,18 @@
                             <constraint firstItem="YE2-UH-ADZ" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="LtA-Az-2Y3"/>
                             <constraint firstItem="pd0-g9-EUo" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="NaF-cV-7Dv"/>
                             <constraint firstItem="Esh-IK-jvv" firstAttribute="bottom" secondItem="pd0-g9-EUo" secondAttribute="bottom" constant="16" id="Pmk-Zz-v7M"/>
-                            <constraint firstItem="EGr-CY-79c" firstAttribute="top" secondItem="cud-b2-fYe" secondAttribute="bottom" constant="30" id="YBv-Qo-Mc3"/>
+                            <constraint firstItem="vsS-sO-pAp" firstAttribute="top" secondItem="Esh-IK-jvv" secondAttribute="top" id="TnQ-gV-XuR"/>
+                            <constraint firstItem="cud-b2-fYe" firstAttribute="top" secondItem="vsS-sO-pAp" secondAttribute="bottom" constant="16" id="Wrm-do-NhM"/>
+                            <constraint firstItem="EGr-CY-79c" firstAttribute="top" secondItem="cud-b2-fYe" secondAttribute="bottom" id="YGu-rM-lIH"/>
                             <constraint firstItem="Esh-IK-jvv" firstAttribute="trailing" secondItem="YE2-UH-ADZ" secondAttribute="trailing" constant="16" id="cJ6-CD-9fk"/>
                             <constraint firstItem="EGr-CY-79c" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="egZ-K8-jPK"/>
                             <constraint firstItem="YE2-UH-ADZ" firstAttribute="leading" secondItem="Esh-IK-jvv" secondAttribute="leading" constant="16" id="geI-ht-FFe"/>
-                            <constraint firstItem="cud-b2-fYe" firstAttribute="top" secondItem="Esh-IK-jvv" secondAttribute="top" id="uyn-Ub-YQY"/>
+                            <constraint firstItem="vsS-sO-pAp" firstAttribute="centerX" secondItem="6sv-Pd-yVU" secondAttribute="centerX" id="ieQ-HD-XVw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dUU-93-YYM"/>
                     <connections>
+                        <outlet property="accountImageView" destination="vsS-sO-pAp" id="3V2-JA-JoL"/>
                         <outlet property="clearButton" destination="pd0-g9-EUo" id="fFe-OO-LZN"/>
                         <outlet property="eightNumberButton" destination="m8o-SP-fCV" id="ds9-hs-HIQ"/>
                         <outlet property="firstPoint" destination="9ON-Ha-4KB" id="Q4V-H4-hs8"/>
@@ -774,19 +781,22 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Clf-s7-Iap"/>
+        <segue reference="5mu-xm-89z"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Account" width="170.5" height="170.5"/>
         <image name="Background" width="333" height="333"/>
         <image name="Logo" width="333" height="333"/>
         <image name="WelcomeImage" width="1333" height="2000"/>
-        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.2199999988079071" green="0.38400000333786011" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PointColor">
+        <namedColor name="AddDocumentBackgroundColor">
             <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PointColor">
+            <color red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

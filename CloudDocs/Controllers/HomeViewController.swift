@@ -12,6 +12,9 @@ class HomeViewController: UIViewController {
     var ref: DatabaseReference!
     var storageRef: StorageReference!
     var user: User?
+    var imagePicker = UIImagePickerController()
+    
+    var accountButton: ImageBarButton!
     
     var documents = [Document]()
     var filteredDocuments = [Document]()
@@ -33,10 +36,20 @@ class HomeViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
+        
+        if user!.photoURL != nil  {
+            accountButton = ImageBarButton(withUrl: user!.photoURL)
+        } else {
+            accountButton = ImageBarButton(withImage: UIImage(named: "Account"))
+        }
+        
+        accountButton.button.addTarget(self, action: #selector(accountPressed), for: .touchUpInside)
+        navigationItem.rightBarButtonItems = [accountButton.load()]
         
         ref.child("users").child(user!.uid).child("documents").observe(.value, with: { snapshot in
             self.documents.removeAll()
@@ -90,18 +103,31 @@ class HomeViewController: UIViewController {
         documentsCollectionView.dataSource = self
         documentsCollectionView.register(UINib(nibName: "DocumentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentCollectionViewCell")
         documentsCollectionView.register(UINib(nibName: "AddDocumentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddDocumentCollectionViewCell")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
-    @IBAction func signOutPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Do you really want to sign out?", message: "", preferredStyle: .alert)
-        
+    @objc func reload(notification: NSNotification) {
+        documentsCollectionView.reloadData()
+    }
+    
+    @objc func accountPressed() {
+        let alert = UIAlertController(title: user!.displayName, message: user!.email, preferredStyle: .actionSheet)
+
         alert.view.tintColor = UIColor(named: "AccentColor")
         
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
-            alert.self.dismiss(animated: true)
+        let uploadPhoto = UIAlertAction(title: "Upload Photo", style: .default) { action in
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+                
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = .savedPhotosAlbum
+                self.imagePicker.allowsEditing = false
+                
+                self.present(self.imagePicker, animated: true)
+            }
         }
-        
-        let signOut = UIAlertAction(title: "Sign Out", style: .destructive) { action in
+
+        let signOut = UIAlertAction(title: "Sign Out", style: .default) { action in
             do {
                 try Auth.auth().signOut()
                 self.performSegue(withIdentifier: "HomeToWelcome", sender: self)
@@ -111,12 +137,15 @@ class HomeViewController: UIViewController {
             }
         }
         
-        alert.addAction(cancel)
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            alert.self.dismiss(animated: true)
+        }
+
+        alert.addAction(uploadPhoto)
         alert.addAction(signOut)
-        
-        self.present(alert, animated: true, completion: {
-            alert.view.tintColor = UIColor(named: "AccentColor")
-        })
+        alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -324,5 +353,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
             return UIMenu(title: "", children: [share, delete])
         }
+    }
+}
+
+extension HomeViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: { () -> Void in })
+        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        
+        accountButton.imageView.image = image
+        
+        let accountRef = storageRef!.child("\(user!.uid)/account.png")
+        
+        let accountUpload = accountRef.putData(image.pngData()!, metadata: nil) { (metadata, error) in
+            accountRef.downloadURL { (url, error) in
+                guard let downloadURL = url else { return }
+
+                let changeRequest = self.user!.createProfileChangeRequest()
+                changeRequest.photoURL = downloadURL
+                changeRequest.commitChanges()
+            }
+        }
+        
+        accountUpload.resume()
     }
 }

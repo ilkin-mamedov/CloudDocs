@@ -3,6 +3,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import SDWebImage
 import SPAlert
 
 class DocumentViewController: UIViewController {
@@ -40,6 +41,7 @@ class DocumentViewController: UIViewController {
         documentFieldsTableView.delegate = self
         documentFieldsTableView.dataSource = self
         documentFieldsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DocumentFieldCell")
+        documentFieldsTableView.register(UINib(nibName: "PhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "PhotoTableViewCell")
     }
     
     @IBAction func deletePressed(_ sender: UIBarButtonItem) {
@@ -70,21 +72,54 @@ class DocumentViewController: UIViewController {
 extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fields.count
+        return fields.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "DocumentFieldCell")
-        
-        let field = fields[indexPath.row]
-        
-        cell.textLabel!.text = field.title
-        cell.detailTextLabel!.text = field.subtitle
-        
-        return cell
+        if indexPath.row == fields.count {
+            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell", for: indexPath) as! PhotoTableViewCell
+            
+            cell.indicatorView.startAnimating()
+            
+            storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").downloadURL { url, error in
+                guard let downloadURL = url else {
+                    if error != nil {
+                        cell.indicatorView.stopAnimating()
+                        cell.indicatorView.isHidden = true
+                        print(error!)
+                    }
+                    return
+                }
+                
+                cell.photoImageView.sd_setImage(with: downloadURL) { _, _, _, _ in
+                    cell.indicatorView.stopAnimating()
+                    cell.indicatorView.isHidden = true
+                }
+            }
+            
+            return cell
+        } else {
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "DocumentFieldCell")
+            
+            let field = fields[indexPath.row]
+            
+            cell.textLabel!.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            cell.textLabel!.text = field.title
+            cell.detailTextLabel!.text = field.subtitle
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         documentFieldsTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == fields.count {
+            return 200
+        } else {
+            return 44
+        }
     }
 }

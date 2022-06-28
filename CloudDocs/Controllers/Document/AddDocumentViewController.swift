@@ -51,6 +51,7 @@ class AddDocumentViewController: UIViewController {
             ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).removeValue()
             storageRef!.child("\(user!.uid)/documents/\(documentID).png").delete { _ in }
         }
+        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
     }
 }
 
@@ -127,7 +128,7 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             present(imagePicker, animated: true) {
                 sender.setTitle("Photo uploaded", for: .normal)
                 sender.isEnabled = false
-                sender.backgroundColor = UIColor(named: "PointColor")
+                sender.backgroundColor = UIColor(named: "AddDocumentBackgroundColor")
             }
         }
     }
@@ -140,9 +141,7 @@ extension AddDocumentViewController: UINavigationControllerDelegate, UIImagePick
         
         guard let image = info[.originalImage] as? UIImage else { return }
         
-        let upload = storageRef!.child("\(user!.uid)/documents/\(documentID).png").putData(image.pngData()!, metadata: nil) { (metadata, error) in
-            
-        }
+        let upload = storageRef!.child("\(user!.uid)/documents/\(documentID).png").putData(image.pngData()!, metadata: nil) { (metadata, error) in }
         
         upload.resume()
     }

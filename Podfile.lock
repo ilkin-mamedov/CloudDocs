@@ -114,6 +114,9 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
+  - SDWebImage (5.12.6):
+    - SDWebImage/Core (= 5.12.6)
+  - SDWebImage/Core (5.12.6)
   - SPAlert (4.2.0)
 
 DEPENDENCIES:
@@ -121,6 +124,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseAuth
   - FirebaseDatabase
+  - SDWebImage
   - SPAlert
 
 SPEC REPOS:
@@ -145,6 +149,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SDWebImage
     - SPAlert
 
 SPEC CHECKSUMS:
@@ -168,8 +173,9 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
   SPAlert: 735da1f16a887e294719217572ce1f936d8c8782
 
-PODFILE CHECKSUM: c0f6bd2ff3ad3d75780758dac599a2b65b62e542
+PODFILE CHECKSUM: 80576a50af3607f8c11b36ec2cdd855fae6c1d6f
 
 COCOAPODS: 1.11.3

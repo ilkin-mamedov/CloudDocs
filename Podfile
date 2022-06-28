@@ -5,6 +5,7 @@ target 'CloudDocs' do
   pod 'FirebaseDatabase'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'SDWebImage'
   pod 'SPAlert'
   
 end

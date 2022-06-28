@@ -4,6 +4,7 @@ import LocalAuthentication
 
 class PasscodeViewController: UIViewController {
 
+    @IBOutlet weak var accountImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var firstPoint: UILabel!
@@ -27,6 +28,15 @@ class PasscodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser!.photoURL != nil {
+            accountImageView.sd_setImage(with: Auth.auth().currentUser!.photoURL)
+            accountImageView.sd_setImage(with: Auth.auth().currentUser!.photoURL, placeholderImage: UIImage(named: "Account"))
+        } else {
+            accountImageView.image = UIImage(named: "Account")
+        }
+        
+        accountImageView.layer.cornerRadius = 35
         
         if UserDefaults.standard.string(forKey: "passcode") != nil {
             if let user = Auth.auth().currentUser {

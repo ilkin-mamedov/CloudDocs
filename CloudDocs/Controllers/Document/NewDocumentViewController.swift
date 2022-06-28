@@ -43,8 +43,13 @@ class NewDocumentViewController: UIViewController {
         newDocumentTableView.register(UINib(nibName: "NewDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "NewDocumentTableViewCell")
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
+    }
+    
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
