@@ -33,7 +33,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "CloudDocs"
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        
+        switch hour {
+        case 0...5:
+            title = "Good night"
+        case 6...11:
+            title = "Good morning"
+        case 12...17:
+            title = "Good afternoon"
+        case 18...23:
+            title = "Good evening"
+        default:
+            title = "CloudDocs"
+        }
+        
         navigationController!.navigationBar.prefersLargeTitles = true
         searchController.searchBar.tintColor = UIColor(named: "AccentColor")
         searchController.searchResultsUpdater = self
@@ -107,8 +123,8 @@ class HomeViewController: UIViewController {
         
         documentsCollectionView.delegate = self
         documentsCollectionView.dataSource = self
-        documentsCollectionView.register(UINib(nibName: "DocumentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentCollectionViewCell")
         documentsCollectionView.register(UINib(nibName: "AddDocumentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddDocumentCollectionViewCell")
+        documentsCollectionView.register(UINib(nibName: "DocumentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentCollectionViewCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
@@ -135,8 +151,35 @@ class HomeViewController: UIViewController {
                 self.present(self.imagePicker, animated: true)
             }
         }
+        
+        let changeName = UIAlertAction(title: "Change Name", style: .default) { action in
+            let nameAlert = UIAlertController(title: "What is your name?", message: "", preferredStyle: .alert)
+            
+            nameAlert.view.tintColor = UIColor(named: "AccentColor")
+            
+            nameAlert.addTextField { textField in
+                textField.placeholder = ""
+                textField.text = self.user!.displayName
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+                nameAlert.self.dismiss(animated: true)
+            }
 
-        let signOut = UIAlertAction(title: "Sign Out", style: .default) { action in
+            let save = UIAlertAction(title: "Save", style: .default) { action in
+                let changeRequest = self.user!.createProfileChangeRequest()
+                changeRequest.displayName = nameAlert.textFields![0].text
+                changeRequest.commitChanges()
+                SPAlert.present(title: "Name is Changed", preset: .done)
+            }
+            
+            nameAlert.addAction(cancel)
+            nameAlert.addAction(save)
+            
+            self.present(nameAlert, animated: true, completion: nil)
+        }
+
+        let signOut = UIAlertAction(title: "Sign Out", style: .destructive) { action in
             do {
                 try Auth.auth().signOut()
                 self.performSegue(withIdentifier: "HomeToWelcome", sender: self)
@@ -146,11 +189,12 @@ class HomeViewController: UIViewController {
             }
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             alert.self.dismiss(animated: true)
         }
 
         alert.addAction(uploadPhoto)
+        alert.addAction(changeName)
         alert.addAction(signOut)
         alert.addAction(cancel)
 
@@ -161,6 +205,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == "HomeToDocument" {
             let documentViewController = segue.destination as! DocumentViewController
             documentViewController.id = documentID
+            title = "CloudDocs"
         }
     }
 }
@@ -191,7 +236,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if searchController.isActive && !searchController.searchBar.text!.isEmpty {
             let cell = documentsCollectionView.dequeueReusableCell(withReuseIdentifier: "DocumentCollectionViewCell", for: indexPath) as! DocumentCollectionViewCell
             
-            setUpCell(for: cell, at: indexPath, searchIsActive: true)
+            setUpCell(collectionView, for: cell, at: indexPath, searchIsActive: true)
             
             return cell
         } else {
@@ -200,7 +245,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             } else {
                 let cell = documentsCollectionView.dequeueReusableCell(withReuseIdentifier: "DocumentCollectionViewCell", for: indexPath) as! DocumentCollectionViewCell
                 
-                setUpCell(for: cell, at: indexPath, searchIsActive: false)
+                setUpCell(collectionView, for: cell, at: indexPath, searchIsActive: false)
                 
                 return cell
             }
@@ -249,7 +294,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func setUpCell(for cell: DocumentCollectionViewCell, at indexPath: IndexPath, searchIsActive: Bool) {
+    func setUpCell(_ collectionView: UICollectionView, for cell: DocumentCollectionViewCell, at indexPath: IndexPath, searchIsActive: Bool) {
         
         var document: Document?
         
@@ -261,6 +306,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.titleLabel.text = Document.typeToString(type: document!.type)
         cell.subtitleLabel.text = document!.title
+        cell.documentImageView.layer.sublayers?.removeAll()
+        let gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: 0, width: (collectionView.bounds.width - 48) / 2, height: (collectionView.bounds.width - 48) / 2)
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.5, 1.0]
+        cell.documentImageView.layer.insertSublayer(gradient, at: 0)
         
         switch document!.type {
         case .nationalPassport:

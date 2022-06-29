@@ -2,10 +2,6 @@ import UIKit
 import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
    
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
@@ -14,11 +10,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController!.navigationBar.barStyle = .black
+        
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "WelcomeToPasscode", sender: self)
         }
-        
-        navigationController?.navigationBar.barStyle = .black
         
         signUpButton.layer.cornerRadius = 5
         signInButton.layer.borderWidth = 1
@@ -26,6 +22,12 @@ class WelcomeViewController: UIViewController {
         signInButton.layer.cornerRadius = 5
         
         captionAnimation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WelcomeToSignUp" || segue.identifier == "WelcomeToSignIn" {
+            navigationController!.navigationBar.barStyle = .default
+        }
     }
     
     private func captionAnimation() {

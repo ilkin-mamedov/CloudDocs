@@ -10,7 +10,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController!.navigationBar.tintColor = .white
+        navigationController!.navigationBar.tintColor = UIColor(named: "AccentColor")
         
         emailTextField.layer.cornerRadius = 5
         passwordTextField.layer.cornerRadius = 5
@@ -25,6 +25,11 @@ class SignInViewController: UIViewController {
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
+    }
+    
+    @IBAction func backPressed(_ sender: UIBarButtonItem) {
+        navigationController!.popViewController(animated: true)
+        navigationController!.navigationBar.barStyle = .black
     }
     
     private func isEmptyFields() -> Bool {

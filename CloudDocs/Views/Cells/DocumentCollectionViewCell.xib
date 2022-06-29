@@ -20,12 +20,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-M8-ubq">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JXa-At-3Ki">
-                                <rect key="frame" x="0.0" y="40.5" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="PH7-89-C9M"/>
-                                    <constraint firstAttribute="height" constant="50" id="sSt-b2-utX"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JXa-At-3Ki">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tuj-B1-8pV">
                                 <rect key="frame" x="16" y="90.5" width="118" height="43.5"/>
@@ -47,9 +43,11 @@
                         </subviews>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="JXa-At-3Ki" firstAttribute="leading" secondItem="cqM-M8-ubq" secondAttribute="leading" id="BmL-1u-2oa"/>
+                            <constraint firstItem="JXa-At-3Ki" firstAttribute="leading" secondItem="cqM-M8-ubq" secondAttribute="leading" id="8Xn-kn-EDM"/>
                             <constraint firstItem="Tuj-B1-8pV" firstAttribute="leading" secondItem="cqM-M8-ubq" secondAttribute="leading" constant="16" id="EXE-et-8IK"/>
-                            <constraint firstItem="Tuj-B1-8pV" firstAttribute="top" secondItem="JXa-At-3Ki" secondAttribute="bottom" id="IP7-Ns-Dtw"/>
+                            <constraint firstItem="JXa-At-3Ki" firstAttribute="top" secondItem="cqM-M8-ubq" secondAttribute="top" id="J0j-T4-TKU"/>
+                            <constraint firstAttribute="trailing" secondItem="JXa-At-3Ki" secondAttribute="trailing" id="WNq-fD-mhz"/>
+                            <constraint firstAttribute="bottom" secondItem="JXa-At-3Ki" secondAttribute="bottom" id="jnw-oH-Ro4"/>
                             <constraint firstAttribute="bottom" secondItem="Tuj-B1-8pV" secondAttribute="bottom" constant="16" id="nBH-Sg-iao"/>
                             <constraint firstAttribute="trailing" secondItem="Tuj-B1-8pV" secondAttribute="trailing" constant="16" id="wPq-t2-nsE"/>
                         </constraints>

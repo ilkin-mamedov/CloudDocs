@@ -21,16 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Oqv-hq-H5y">
-                                <rect key="frame" x="0.0" y="2" width="150" height="146"/>
+                                <rect key="frame" x="25" y="27" width="100" height="96"/>
                                 <color key="tintColor" name="AddDocumentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="KV4-Ve-iZ1"/>
+                                    <constraint firstAttribute="height" constant="100" id="mbd-Wd-tcN"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="AddDocumentBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Oqv-hq-H5y" secondAttribute="bottom" id="Fgq-wo-tB0"/>
-                            <constraint firstAttribute="trailing" secondItem="Oqv-hq-H5y" secondAttribute="trailing" id="MFQ-hw-Dzz"/>
-                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="top" secondItem="7Fu-Iz-zAR" secondAttribute="top" id="Nhw-Qx-erG"/>
-                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="leading" secondItem="7Fu-Iz-zAR" secondAttribute="leading" id="OWr-ef-7LE"/>
+                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="centerX" secondItem="7Fu-Iz-zAR" secondAttribute="centerX" id="73b-dE-TOc"/>
+                            <constraint firstItem="Oqv-hq-H5y" firstAttribute="centerY" secondItem="7Fu-Iz-zAR" secondAttribute="centerY" id="sWi-jI-Xtd"/>
                         </constraints>
                     </view>
                 </subviews>

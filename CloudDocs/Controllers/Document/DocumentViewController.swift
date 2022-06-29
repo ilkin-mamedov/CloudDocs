@@ -115,6 +115,10 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row != fields.count {
+            UIPasteboard.general.string = fields[indexPath.row].subtitle
+            SPAlert.present(title: "Copied to Clipboard", preset: .done)
+        }
         documentFieldsTableView.deselectRow(at: indexPath, animated: true)
     }
     

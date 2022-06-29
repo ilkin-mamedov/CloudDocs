@@ -22,7 +22,7 @@ class PasscodeViewController: UIViewController {
     @IBOutlet weak var eightNumberButton: UIButton!
     @IBOutlet weak var nineNumberButton: UIButton!
     @IBOutlet weak var zeroNumberButton: UIButton!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var biometricsButton: UIButton!
     
     private var passcode = ""
     
@@ -47,8 +47,15 @@ class PasscodeViewController: UIViewController {
             titleLabel.text = "Setting up your passcode"
         }
         
-        clearButton.layer.cornerRadius = 28
-        clearButton.setTitle("", for: .normal)
+        let context = LAContext()
+        
+        if context.biometryType == .touchID {
+            biometricsButton.setImage(UIImage(systemName: "touchid"), for: .normal)
+        } else if context.biometryType == .faceID {
+            biometricsButton.setImage(UIImage(systemName: "faceid"), for: .normal)
+        } else {
+            biometricsButton.isEnabled = false
+        }
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -68,6 +75,7 @@ class PasscodeViewController: UIViewController {
                 
                 if UserDefaults.standard.string(forKey: "passcode") != nil {
                     if passcode == UserDefaults.standard.string(forKey: "passcode") {
+                        titleLabel.text = "Welcome"
                         performSegue(withIdentifier: "PasscodeToHome", sender: self)
                     } else {
                         passcode = ""
@@ -128,11 +136,18 @@ class PasscodeViewController: UIViewController {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
                 DispatchQueue.main.async {
                     guard success, error == nil else { return }
-                    
+                    self!.firstPoint.textColor = UIColor(named: "AccentColor")
+                    self!.secondPoint.textColor = UIColor(named: "AccentColor")
+                    self!.thirdPoint.textColor = UIColor(named: "AccentColor")
+                    self!.fourthPoint.textColor = UIColor(named: "AccentColor")
                     self!.performSegue(withIdentifier: "PasscodeToHome", sender: self)
                 }
             }
         }
+    }
+    
+    @IBAction func biometricsPressed(_ sender: UIButton) {
+        setUpBiometrics()
     }
     
     @IBAction func clearPressed(_ sender: UIButton) {
