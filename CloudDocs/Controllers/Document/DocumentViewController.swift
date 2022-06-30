@@ -59,6 +59,7 @@ class DocumentViewController: UIViewController {
         let delete = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
             self.ref.child("users").child(self.user!.uid).child("documents").child(self.id).removeValue()
             self.storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").delete { _ in }
+            self.storageRef!.child("\(self.user!.uid)/scans/\(self.id).png").delete { _ in }
             SPAlert.present(title: "Deleted Document".localized(), preset: .done)
             self.navigationController!.popViewController(animated: true)
         }
@@ -87,8 +88,21 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
             storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").downloadURL { url, error in
                 guard let downloadURL = url else {
                     if error != nil {
-                        cell.indicatorView.stopAnimating()
-                        cell.indicatorView.isHidden = true
+                        self.storageRef!.child("\(self.user!.uid)/scans/\(self.id).png").downloadURL { url, error in
+                            guard let downloadURL = url else {
+                                if error != nil {
+                                    cell.indicatorView.stopAnimating()
+                                    cell.indicatorView.isHidden = true
+                                    print(error!)
+                                }
+                                return
+                            }
+                            
+                            cell.photoImageView.sd_setImage(with: downloadURL) { _, _, _, _ in
+                                cell.indicatorView.stopAnimating()
+                                cell.indicatorView.isHidden = true
+                            }
+                        }
                         print(error!)
                     }
                     return

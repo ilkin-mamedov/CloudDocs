@@ -374,23 +374,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 imageRef.getData(maxSize: 50 * 1024 * 1024) { data, error in
                   if let error = error {
+                      if searchIsActive {
+                          imageRef = self.storageRef.child("\(self.user!.uid)/scans/\(self.filteredDocuments[indexPath.row].id).png")
+                      } else {
+                          imageRef = self.storageRef.child("\(self.user!.uid)/scans/\(self.documents[indexPath.row - 1].id).png")
+                      }
+                      
+                      imageRef.getData(maxSize: 50 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            self.presentShare(imageData: data!)
+                        }
+                      }
                       print(error)
                   } else {
-                      if let image = UIImage(data: data!) {
-                          let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-                          
-                          activityViewController.popoverPresentationController?.sourceView = self.view
-                          
-                          activityViewController.excludedActivityTypes = [
-                              .airDrop,
-                              .assignToContact,
-                              .message,
-                              .mail,
-                              .copyToPasteboard,
-                          ]
-                          
-                          self.present(activityViewController, animated: true, completion: nil)
-                      }
+                      self.presentShare(imageData: data!)
                   }
                 }
             }
@@ -400,11 +399,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 if searchIsActive {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.filteredDocuments[indexPath.row].id).removeValue()
                     self.storageRef!.child("\(self.user!.uid)/documents/\(self.filteredDocuments[indexPath.row].id).png").delete { _ in }
+                    self.storageRef!.child("\(self.user!.uid)/scans/\(self.filteredDocuments[indexPath.row].id).png").delete { _ in }
                     self.filteredDocuments.remove(at: indexPath.row)
                     self.documentsCollectionView.reloadData()
                 } else {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.documents[indexPath.row - 1].id).removeValue()
                     self.storageRef!.child("\(self.user!.uid)/documents/\(self.documents[indexPath.row - 1].id).png").delete { _ in }
+                    self.storageRef!.child("\(self.user!.uid)/scans/\(self.documents[indexPath.row - 1].id).png").delete { _ in }
                     self.documents.remove(at: indexPath.row - 1)
                     self.documentsCollectionView.reloadData()
                 }
@@ -412,6 +413,24 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
 
             return UIMenu(title: "", children: [share, delete])
+        }
+    }
+    
+    func presentShare(imageData: Data) {
+        if let image = UIImage(data: imageData) {
+            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            activityViewController.excludedActivityTypes = [
+                .airDrop,
+                .assignToContact,
+                .message,
+                .mail,
+                .copyToPasteboard,
+            ]
+            
+            self.present(activityViewController, animated: true, completion: nil)
         }
     }
 }

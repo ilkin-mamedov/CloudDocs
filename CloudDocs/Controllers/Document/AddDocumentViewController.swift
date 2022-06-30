@@ -4,6 +4,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import SPAlert
+import VisionKit
 
 class AddDocumentViewController: UIViewController {
     
@@ -36,6 +37,7 @@ class AddDocumentViewController: UIViewController {
         documentFieldsTableView.delegate = self
         documentFieldsTableView.dataSource = self
         documentFieldsTableView.register(UINib(nibName: "AddPhotoButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddPhotoButtonTableViewCell")
+        documentFieldsTableView.register(UINib(nibName: "ScanDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "ScanDocumentTableViewCell")
         documentFieldsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DocumentFieldCell")
     }
     
@@ -50,6 +52,7 @@ class AddDocumentViewController: UIViewController {
         if !isAdded {
             ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).removeValue()
             storageRef!.child("\(user!.uid)/documents/\(documentID).png").delete { _ in }
+            storageRef!.child("\(user!.uid)/scans/\(documentID).png").delete { _ in }
         }
         NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
     }
@@ -58,11 +61,17 @@ class AddDocumentViewController: UIViewController {
 extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : fields!.count
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return 1
+        } else {
+            return fields!.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,6 +79,12 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "AddPhotoButtonTableViewCell", for: indexPath) as! AddPhotoButtonTableViewCell
             
             cell.addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
+            
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "ScanDocumentTableViewCell", for: indexPath) as! ScanDocumentTableViewCell
+            
+            cell.scanDocumentButton.addTarget(self, action: #selector(scanDocument), for: .touchUpInside)
             
             return cell
         } else {
@@ -132,6 +147,14 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             }
         }
     }
+    
+    @objc func scanDocument() {
+        let documentCameraViewController = VNDocumentCameraViewController()
+        documentCameraViewController.delegate = self
+        present(documentCameraViewController, animated: true) {
+            self.ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).child("type").setValue(Document.typeToString(type: self.type!))
+        }
+    }
 }
 
 extension AddDocumentViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -144,5 +167,14 @@ extension AddDocumentViewController: UINavigationControllerDelegate, UIImagePick
         let upload = storageRef!.child("\(user!.uid)/documents/\(documentID).png").putData(image.pngData()!, metadata: nil) { (metadata, error) in }
         
         upload.resume()
+    }
+}
+
+extension AddDocumentViewController: VNDocumentCameraViewControllerDelegate {
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        let upload = storageRef!.child("\(user!.uid)/scans/\(documentID).png").putData(scan.imageOfPage(at: 0).pngData()!, metadata: nil) { (metadata, error) in }
+        
+        upload.resume()
+        dismiss(animated: true)
     }
 }
