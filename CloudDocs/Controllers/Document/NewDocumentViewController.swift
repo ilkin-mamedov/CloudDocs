@@ -7,20 +7,20 @@ class NewDocumentViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
 
     let newDocuments = [
-        NewDocument(type: .nationalPassport, image: UIImage(named: "Passport"), title: "National Passport"),
-        NewDocument(type: .internationalPassport, image: UIImage(named: "Passport"), title: "International Passport"),
-        NewDocument(type: .birthCertificate, image: UIImage(named: "BirthCertificate"), title: "Birth Certificate"),
-        NewDocument(type: .foreignDocument, image: UIImage(named: "ForeignDocument"), title: "Foreign Document"),
-        NewDocument(type: .snils, image: UIImage(named: "SNILS"), title: "SNILS"),
-        NewDocument(type: .inn, image: UIImage(named: "INN"), title: "INN"),
-        NewDocument(type: .oms, image: UIImage(named: "OMS"), title: "OMS"),
-        NewDocument(type: .driversLicense, image: UIImage(named: "DriversLicense"), title: "Drivers License"),
-        NewDocument(type: .vehicleRegID, image: UIImage(named: "VehicleDocument"), title: "Vehicle Reg ID"),
-        NewDocument(type: .vehiclePassport, image: UIImage(named: "VehicleDocument"), title: "Vehicle Passport"),
-        NewDocument(type: .osago, image: UIImage(named: "VehicleDocument"), title: "OSAGO"),
-        NewDocument(type: .casco, image: UIImage(named: "VehicleDocument"), title: "CASCO"),
-        NewDocument(type: .militaryID, image: UIImage(named: "MilitaryID"), title: "Military ID"),
-        NewDocument(type: .vzrInsurance, image: UIImage(named: "VZRInsurance"), title: "VZR Insurance")
+        NewDocument(type: .nationalPassport, image: UIImage(named: "Passport"), title: "National Passport".localized()),
+        NewDocument(type: .internationalPassport, image: UIImage(named: "Passport"), title: "International Passport".localized()),
+        NewDocument(type: .birthCertificate, image: UIImage(named: "BirthCertificate"), title: "Birth Certificate".localized()),
+        NewDocument(type: .foreignDocument, image: UIImage(named: "ForeignDocument"), title: "Foreign Document".localized()),
+        NewDocument(type: .snils, image: UIImage(named: "SNILS"), title: "SNILS".localized()),
+        NewDocument(type: .inn, image: UIImage(named: "INN"), title: "INN".localized()),
+        NewDocument(type: .oms, image: UIImage(named: "OMS"), title: "OMS".localized()),
+        NewDocument(type: .driversLicense, image: UIImage(named: "DriversLicense"), title: "Drivers License".localized()),
+        NewDocument(type: .vehicleRegID, image: UIImage(named: "VehicleDocument"), title: "Vehicle Reg ID".localized()),
+        NewDocument(type: .vehiclePassport, image: UIImage(named: "VehicleDocument"), title: "Vehicle Passport".localized()),
+        NewDocument(type: .osago, image: UIImage(named: "VehicleDocument"), title: "OSAGO".localized()),
+        NewDocument(type: .casco, image: UIImage(named: "VehicleDocument"), title: "CASCO".localized()),
+        NewDocument(type: .militaryID, image: UIImage(named: "MilitaryID"), title: "Military ID".localized()),
+        NewDocument(type: .vzrInsurance, image: UIImage(named: "VZRInsurance"), title: "VZR Insurance".localized())
     ]
     
     var filteredNewDocuments = [NewDocument]()
@@ -32,7 +32,7 @@ class NewDocumentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "New Document"
+        title = "New Document".localized()
         searchController.searchBar.tintColor = UIColor(named: "AccentColor")
         searchController.searchResultsUpdater = self
                 searchController.delegate = self

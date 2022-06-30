@@ -17,12 +17,12 @@ class SignInViewController: UIViewController {
         signInButton.layer.cornerRadius = 5
         
         emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "E-mail Address",
+            string: "E-mail Address".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
+            string: "Password".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
     }
@@ -46,7 +46,9 @@ class SignInViewController: UIViewController {
         
         if !isEmptyFields() {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                self!.performSegue(withIdentifier: "SignInToPasscode", sender: self)
+                if error == nil {
+                    self!.performSegue(withIdentifier: "SignInToPasscode", sender: self)
+                }
             }
         }
     }

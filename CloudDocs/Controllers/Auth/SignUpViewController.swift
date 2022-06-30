@@ -21,22 +21,22 @@ class SignUpViewController: UIViewController {
         signUpButton.layer.cornerRadius = 5
         
         nameTextField.attributedPlaceholder = NSAttributedString(
-            string: "What is your name?",
+            string: "What is your name?".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         
         emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "E-mail Address",
+            string: "E-mail Address".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
+            string: "Password".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Confirm Password",
+            string: "Confirm Password".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
     }

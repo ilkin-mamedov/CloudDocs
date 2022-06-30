@@ -27,7 +27,7 @@ class DocumentViewController: UIViewController {
         
         ref.child("users").child(user!.uid).child("documents").child(id).observeSingleEvent(of: .value) { snapshot in
             if let dict = snapshot.value as? [String : AnyObject] {
-                self.title = (dict["type"] as! String)
+                self.title = (dict["type"] as! String).localized()
                 for item in dict {
                     if item.key == "type" {
                         continue
@@ -48,18 +48,18 @@ class DocumentViewController: UIViewController {
     }
     
     @IBAction func deletePressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Do you really want to delete this document?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Do you really want to delete this document?".localized(), message: "", preferredStyle: .alert)
         
         alert.view.tintColor = UIColor(named: "AccentColor")
         
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+        let cancel = UIAlertAction(title: "Cancel".localized(), style: .default) { _ in
             alert.self.dismiss(animated: true)
         }
         
-        let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+        let delete = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
             self.ref.child("users").child(self.user!.uid).child("documents").child(self.id).removeValue()
             self.storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").delete { _ in }
-            SPAlert.present(title: "Deleted Document", preset: .done)
+            SPAlert.present(title: "Deleted Document".localized(), preset: .done)
             self.navigationController!.popViewController(animated: true)
         }
         
@@ -107,7 +107,7 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
             let field = fields[indexPath.row]
             
             cell.textLabel!.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-            cell.textLabel!.text = field.title
+            cell.textLabel!.text = field.title.localized()
             cell.detailTextLabel!.text = field.subtitle
             
             return cell
@@ -117,7 +117,7 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != fields.count {
             UIPasteboard.general.string = fields[indexPath.row].subtitle
-            SPAlert.present(title: "Copied to Clipboard", preset: .done)
+            SPAlert.present(title: "Copied to Clipboard".localized(), preset: .done)
         }
         documentFieldsTableView.deselectRow(at: indexPath, animated: true)
     }

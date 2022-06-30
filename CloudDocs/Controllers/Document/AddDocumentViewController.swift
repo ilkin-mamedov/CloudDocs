@@ -29,7 +29,7 @@ class AddDocumentViewController: UIViewController {
         documentDataSource.type = type!
         fields = documentDataSource.fields
         
-        title = Document.typeToString(type: type!)
+        title = Document.typeToString(type: type!).localized()
         
         ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).child("type").setValue(Document.typeToString(type: type!))
         
@@ -41,7 +41,7 @@ class AddDocumentViewController: UIViewController {
     
     
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
-        SPAlert.present(title: "Added Document", preset: .done)
+        SPAlert.present(title: "Added Document".localized(), preset: .done)
         isAdded = true
         dismiss(animated: true)
     }
@@ -77,7 +77,7 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             
             let field = fields![indexPath.row]
             
-            cell.textLabel!.text = field.title
+            cell.textLabel!.text = field.title.localized()
             cell.detailTextLabel!.text = field.subtitle
             
             return cell
@@ -90,17 +90,17 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             let field = fields![indexPath.row]
             
-            let alert = UIAlertController(title: field.title, message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: field.title.localized(), message: "", preferredStyle: .alert)
 
             alert.view.tintColor = UIColor(named: "AccentColor")
 
             alert.addTextField { textField in textField.placeholder = "" }
 
-            let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+            let cancel = UIAlertAction(title: "Cancel".localized(), style: .default) { _ in
                 alert.self.dismiss(animated: true)
             }
 
-            let save = UIAlertAction(title: "Save", style: .default) { action in
+            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
                 if let subtitle = alert.textFields![0].text, !subtitle.isEmpty {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).child(field.title).setValue(subtitle)
                     tableView.cellForRow(at: indexPath)?.detailTextLabel!.text = subtitle
@@ -126,7 +126,7 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             imagePicker.allowsEditing = false
             
             present(imagePicker, animated: true) {
-                sender.setTitle("Photo uploaded", for: .normal)
+                sender.setTitle("Photo uploaded".localized(), for: .normal)
                 sender.isEnabled = false
                 sender.backgroundColor = UIColor(named: "AddDocumentBackgroundColor")
             }

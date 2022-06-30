@@ -109,7 +109,7 @@ class DocumentDataSource {
                 DocumentField(title: "Permissible maximum weight", subtitle: ""),
                 DocumentField(title: "Weight without load", subtitle: ""),
                 DocumentField(title: "Name", subtitle: ""),
-                DocumentField(title: "Spetial marks", subtitle: ""),
+                DocumentField(title: "Special marks", subtitle: ""),
             ]
         case .vehiclePassport:
             return [

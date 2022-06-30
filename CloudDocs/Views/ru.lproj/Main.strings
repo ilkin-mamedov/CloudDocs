@@ -1,0 +1,129 @@
+
+/* Class = "UILabel"; text = "•"; ObjectID = "1Sp-0a-bF5"; */
+"1Sp-0a-bF5.text" = "•";
+
+/* Class = "UILabel"; text = "•"; ObjectID = "9ON-Ha-4KB"; */
+"9ON-Ha-4KB.text" = "•";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "9ud-YJ-QeP"; */
+"9ud-YJ-QeP.title" = "Добавить";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "9vw-Vy-s0O"; */
+"9vw-Vy-s0O.title" = "Отмена";
+
+/* Class = "UILabel"; text = "•"; ObjectID = "C3U-WG-wcO"; */
+"C3U-WG-wcO.text" = "•";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "Fof-xU-maL"; */
+"Fof-xU-maL.configuration.title" = "Зарегистрироваться";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Fof-xU-maL"; */
+"Fof-xU-maL.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "GdA-bE-x5Y"; */
+"GdA-bE-x5Y.configuration.title" = "Зарегистрироваться";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GdA-bE-x5Y"; */
+"GdA-bE-x5Y.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "IXs-Cq-atk"; */
+"IXs-Cq-atk.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "IXs-Cq-atk"; */
+"IXs-Cq-atk.normalTitle" = "Кнопка";
+
+/* Class = "UILabel"; text = "Sign In to CloudDocs"; ObjectID = "KaK-wG-Jaf"; */
+"KaK-wG-Jaf.text" = "Войти в CloudDocs";
+
+/* Class = "UIButton"; configuration.title = "5"; ObjectID = "LHZ-UP-1hM"; */
+"LHZ-UP-1hM.configuration.title" = "5";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LHZ-UP-1hM"; */
+"LHZ-UP-1hM.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "4"; ObjectID = "LjJ-cr-69V"; */
+"LjJ-cr-69V.configuration.title" = "4";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LjJ-cr-69V"; */
+"LjJ-cr-69V.normalTitle" = "Кнопка";
+
+/* Class = "UILabel"; text = "Sign Up to CloudDocs"; ObjectID = "Ls5-Ph-Jfd"; */
+"Ls5-Ph-Jfd.text" = "Зарегистрироваться в CloudDocs";
+
+/* Class = "UIButton"; configuration.title = "6"; ObjectID = "NnQ-wN-815"; */
+"NnQ-wN-815.configuration.title" = "6";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NnQ-wN-815"; */
+"NnQ-wN-815.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "Nop-Vl-xR4"; */
+"Nop-Vl-xR4.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Nop-Vl-xR4"; */
+"Nop-Vl-xR4.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "2"; ObjectID = "ODQ-lT-ybm"; */
+"ODQ-lT-ybm.configuration.title" = "2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ODQ-lT-ybm"; */
+"ODQ-lT-ybm.normalTitle" = "Кнопка";
+
+/* Class = "UIBarButtonItem"; title = "Delete"; ObjectID = "XD0-9T-jjB"; */
+"XD0-9T-jjB.title" = "Удалить";
+
+/* Class = "UIButton"; configuration.title = "Sign In"; ObjectID = "a2F-hd-TZR"; */
+"a2F-hd-TZR.configuration.title" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "a2F-hd-TZR"; */
+"a2F-hd-TZR.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Sign In"; ObjectID = "aIA-QZ-rLN"; */
+"aIA-QZ-rLN.configuration.title" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aIA-QZ-rLN"; */
+"aIA-QZ-rLN.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "9"; ObjectID = "hws-gn-bJ8"; */
+"hws-gn-bJ8.configuration.title" = "9";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hws-gn-bJ8"; */
+"hws-gn-bJ8.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "8"; ObjectID = "m8o-SP-fCV"; */
+"m8o-SP-fCV.configuration.title" = "8";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "m8o-SP-fCV"; */
+"m8o-SP-fCV.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "0"; ObjectID = "pQS-ya-rJO"; */
+"pQS-ya-rJO.configuration.title" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pQS-ya-rJO"; */
+"pQS-ya-rJO.normalTitle" = "Кнопка";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "rHK-GJ-iDQ"; */
+"rHK-GJ-iDQ.title" = "Назад";
+
+/* Class = "UIButton"; configuration.title = "7"; ObjectID = "rwD-w4-CYU"; */
+"rwD-w4-CYU.configuration.title" = "7";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rwD-w4-CYU"; */
+"rwD-w4-CYU.normalTitle" = "Кнопка";
+
+/* Class = "UILabel"; text = "•"; ObjectID = "s7f-pN-7CS"; */
+"s7f-pN-7CS.text" = "•";
+
+/* Class = "UIButton"; configuration.title = "3"; ObjectID = "taE-Pg-72P"; */
+"taE-Pg-72P.configuration.title" = "3";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "taE-Pg-72P"; */
+"taE-Pg-72P.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "1"; ObjectID = "uLA-6t-EcF"; */
+"uLA-6t-EcF.configuration.title" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "uLA-6t-EcF"; */
+"uLA-6t-EcF.normalTitle" = "Кнопка";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "zGr-e3-kph"; */
+"zGr-e3-kph.title" = "Назад";

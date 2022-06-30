@@ -39,13 +39,13 @@ class HomeViewController: UIViewController {
         
         switch hour {
         case 0...5:
-            title = "Good night"
+            title = "Good night".localized()
         case 6...11:
-            title = "Good morning"
+            title = "Good morning".localized()
         case 12...17:
-            title = "Good afternoon"
+            title = "Good afternoon".localized()
         case 18...23:
-            title = "Good evening"
+            title = "Good evening".localized()
         default:
             title = "CloudDocs"
         }
@@ -93,7 +93,7 @@ class HomeViewController: UIViewController {
                         case .inn:
                             title = name["Full name"] as? String ?? "Unknown"
                         case .oms:
-                            title = name["Surname, name and patronymic"] as? String ?? "Unknown"
+                            title = name["Surname, name and patronymic".localized()] as? String ?? "Unknown"
                         case .driversLicense:
                             title = name["Full name"] as? String ?? "Unknown"
                         case .vehicleRegID:
@@ -109,7 +109,7 @@ class HomeViewController: UIViewController {
                         case .vzrInsurance:
                             title = name["Full name"] as? String ?? "Unknown"
                         }
-                        self.documents.append(Document(id: id, type: type, title: title))
+                        self.documents.append(Document(id: id, type: type, title: title.localized()))
                     }
                 }
                 self.documents.sort { document1, document2 in
@@ -141,7 +141,7 @@ class HomeViewController: UIViewController {
 
         alert.view.tintColor = UIColor(named: "AccentColor")
         
-        let uploadPhoto = UIAlertAction(title: "Upload Photo", style: .default) { action in
+        let uploadPhoto = UIAlertAction(title: "Upload Photo".localized(), style: .default) { action in
             if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
                 
                 self.imagePicker.delegate = self
@@ -152,8 +152,8 @@ class HomeViewController: UIViewController {
             }
         }
         
-        let changeName = UIAlertAction(title: "Change Name", style: .default) { action in
-            let nameAlert = UIAlertController(title: "What is your name?", message: "", preferredStyle: .alert)
+        let changeName = UIAlertAction(title: "Change Name".localized(), style: .default) { action in
+            let nameAlert = UIAlertController(title: "What is your name?".localized(), message: "", preferredStyle: .alert)
             
             nameAlert.view.tintColor = UIColor(named: "AccentColor")
             
@@ -162,15 +162,15 @@ class HomeViewController: UIViewController {
                 textField.text = self.user!.displayName
             }
             
-            let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
                 nameAlert.self.dismiss(animated: true)
             }
 
-            let save = UIAlertAction(title: "Save", style: .default) { action in
+            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
                 let changeRequest = self.user!.createProfileChangeRequest()
                 changeRequest.displayName = nameAlert.textFields![0].text
                 changeRequest.commitChanges()
-                SPAlert.present(title: "Name is Changed", preset: .done)
+                SPAlert.present(title: "Name is Changed".localized(), preset: .done)
             }
             
             nameAlert.addAction(cancel)
@@ -179,7 +179,7 @@ class HomeViewController: UIViewController {
             self.present(nameAlert, animated: true, completion: nil)
         }
 
-        let signOut = UIAlertAction(title: "Sign Out", style: .destructive) { action in
+        let signOut = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
             do {
                 try Auth.auth().signOut()
                 self.performSegue(withIdentifier: "HomeToWelcome", sender: self)
@@ -189,7 +189,7 @@ class HomeViewController: UIViewController {
             }
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        let cancel = UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
             alert.self.dismiss(animated: true)
         }
 
@@ -215,7 +215,7 @@ extension HomeViewController: UISearchControllerDelegate, UISearchResultsUpdatin
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         filteredDocuments = documents.filter { document in
-            let type = Document.typeToString(type: document.type)
+            let type = Document.typeToString(type: document.type).localized()
             return type.lowercased().contains(text.lowercased())
         }
         documentsCollectionView.reloadData()
@@ -304,7 +304,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             document = documents[indexPath.row - 1]
         }
         
-        cell.titleLabel.text = Document.typeToString(type: document!.type)
+        cell.titleLabel.text = Document.typeToString(type: document!.type).localized()
         cell.subtitleLabel.text = document!.title
         cell.documentImageView.layer.sublayers?.removeAll()
         let gradient = CAGradientLayer()
@@ -362,7 +362,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func setUpContextMenu(for indexPath: IndexPath, searchIsActive: Bool) -> UIContextMenuConfiguration {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
             
-            let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { action in
+            let share = UIAction(title: "Share".localized(), image: UIImage(systemName: "square.and.arrow.up")) { action in
                 
                 var imageRef: StorageReference!
                 
@@ -395,7 +395,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
             }
             
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+            let delete = UIAction(title: "Delete".localized(), image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
                 if searchIsActive {
                     self.ref.child("users").child(self.user!.uid).child("documents").child(self.filteredDocuments[indexPath.row].id).removeValue()
@@ -408,7 +408,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     self.documents.remove(at: indexPath.row - 1)
                     self.documentsCollectionView.reloadData()
                 }
-                SPAlert.present(title: "Deleted Document", preset: .done)
+                SPAlert.present(title: "Deleted Document".localized(), preset: .done)
             }
 
             return UIMenu(title: "", children: [share, delete])

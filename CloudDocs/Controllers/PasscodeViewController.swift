@@ -53,7 +53,7 @@ class PasscodeViewController: UIViewController {
                 }
             }
         } else {
-            titleLabel.text = "Setting up your passcode"
+            titleLabel.text = "Setting up your passcode".localized()
         }
     }
     
@@ -74,11 +74,11 @@ class PasscodeViewController: UIViewController {
                 
                 if UserDefaults.standard.string(forKey: "passcode") != nil {
                     if passcode == UserDefaults.standard.string(forKey: "passcode") {
-                        titleLabel.text = "Welcome"
+                        titleLabel.text = "Welcome".localized()
                         performSegue(withIdentifier: "PasscodeToHome", sender: self)
                     } else {
                         passcode = ""
-                        titleLabel.text = "Invalid passcode"
+                        titleLabel.text = "Invalid passcode".localized()
                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                         disableButtons(false)
                     }
@@ -128,7 +128,7 @@ class PasscodeViewController: UIViewController {
     
     private func setUpBiometrics() {
         let context = LAContext()
-        let reason = "Please, allow to continue with Touch ID."
+        let reason = "Please, allow to continue with Touch ID.".localized()
         var error: NSError? = nil
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
@@ -151,9 +151,9 @@ class PasscodeViewController: UIViewController {
     
     @IBAction func clearPressed(_ sender: UIButton) {
         if UserDefaults.standard.string(forKey: "passcode") != nil {
-            titleLabel.text = "Enter your passcode"
+            titleLabel.text = "Enter your passcode".localized()
         } else {
-            titleLabel.text = "Setting up your passcode"
+            titleLabel.text = "Setting up your passcode".localized()
         }
         
         firstPoint.textColor = UIColor(named: "PointColor")

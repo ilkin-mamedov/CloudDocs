@@ -32,7 +32,7 @@ class WelcomeViewController: UIViewController {
     
     private func captionAnimation() {
         var charIndex = 0.0
-        let titleText = "The place where your documents live."
+        let titleText = "The place where your documents live".localized()
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
                 self.captionLabel.text?.append(letter)

@@ -7,6 +7,7 @@ class AddPhotoButtonTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        addPhotoButton.setTitle("Add photo of document".localized(), for: .normal)
         addPhotoButton.layer.cornerRadius = 5
     }
 
