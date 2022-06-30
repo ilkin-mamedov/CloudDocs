@@ -26,6 +26,8 @@ class PasscodeViewController: UIViewController {
     
     private var passcode = ""
     
+    let context = LAContext()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,21 +42,18 @@ class PasscodeViewController: UIViewController {
         
         if UserDefaults.standard.string(forKey: "passcode") != nil {
             if let user = Auth.auth().currentUser {
-                titleLabel.text = user.displayName!
                 setUpBiometrics()
+                titleLabel.text = user.displayName!
+                if context.biometryType == .touchID {
+                    biometricsButton.setImage(UIImage(systemName: "touchid"), for: .normal)
+                } else if context.biometryType == .faceID {
+                    biometricsButton.setImage(UIImage(systemName: "faceid"), for: .normal)
+                } else {
+                    biometricsButton.isEnabled = false
+                }
             }
         } else {
             titleLabel.text = "Setting up your passcode"
-        }
-        
-        let context = LAContext()
-        
-        if context.biometryType == .touchID {
-            biometricsButton.setImage(UIImage(systemName: "touchid"), for: .normal)
-        } else if context.biometryType == .faceID {
-            biometricsButton.setImage(UIImage(systemName: "faceid"), for: .normal)
-        } else {
-            biometricsButton.isEnabled = false
         }
     }
     
