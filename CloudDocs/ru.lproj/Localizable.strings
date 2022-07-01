@@ -12,8 +12,8 @@
 "Good morning" = "Доброе утро";
 "Good afternoon" = "Добрый день";
 "Good evening" = "Добрый вечер";
-"Upload Photo" = "Загрузить фото";
-"Change Name" = "Изменить имя";
+"Edit Photo" = "Изменить фото";
+"Edit Name" = "Изменить имя";
 "Name is Changed" = "Имя изменено";
 "Cancel" = "Отмена";
 "Save" = "Сохранить";

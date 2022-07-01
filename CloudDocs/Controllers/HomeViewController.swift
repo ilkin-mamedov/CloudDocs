@@ -141,7 +141,7 @@ class HomeViewController: UIViewController {
 
         alert.view.tintColor = UIColor(named: "AccentColor")
         
-        let uploadPhoto = UIAlertAction(title: "Upload Photo".localized(), style: .default) { action in
+        let editPhoto = UIAlertAction(title: "Edit Photo".localized(), style: .default) { action in
             if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
                 
                 self.imagePicker.delegate = self
@@ -152,7 +152,7 @@ class HomeViewController: UIViewController {
             }
         }
         
-        let changeName = UIAlertAction(title: "Change Name".localized(), style: .default) { action in
+        let editName = UIAlertAction(title: "Edit Name".localized(), style: .default) { action in
             let nameAlert = UIAlertController(title: "What is your name?".localized(), message: "", preferredStyle: .alert)
             
             nameAlert.view.tintColor = UIColor(named: "AccentColor")
@@ -193,8 +193,8 @@ class HomeViewController: UIViewController {
             alert.self.dismiss(animated: true)
         }
 
-        alert.addAction(uploadPhoto)
-        alert.addAction(changeName)
+        alert.addAction(editPhoto)
+        alert.addAction(editName)
         alert.addAction(signOut)
         alert.addAction(cancel)
 
