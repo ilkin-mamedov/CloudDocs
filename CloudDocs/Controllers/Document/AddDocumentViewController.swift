@@ -102,6 +102,8 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             documentFieldsTableView.deselectRow(at: indexPath, animated: true)
+        } else if indexPath.section == 1 {
+            documentFieldsTableView.deselectRow(at: indexPath, animated: true)
         } else {
             let field = fields![indexPath.row]
             
@@ -109,7 +111,7 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
 
             alert.view.tintColor = UIColor(named: "AccentColor")
 
-            alert.addTextField { textField in textField.placeholder = "" }
+            alert.addTextField { textField in textField.placeholder = "Optional" }
 
             let cancel = UIAlertAction(title: "Cancel".localized(), style: .default) { _ in
                 alert.self.dismiss(animated: true)

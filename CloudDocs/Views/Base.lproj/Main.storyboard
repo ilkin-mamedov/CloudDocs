@@ -45,9 +45,9 @@
                     <navigationItem key="navigationItem" id="eNE-Hu-4qn"/>
                     <connections>
                         <outlet property="documentsCollectionView" destination="oxj-Oc-mFC" id="jnf-Pj-F8o"/>
-                        <segue destination="AZs-Rm-LGu" kind="presentation" identifier="HomeToWelcome" modalPresentationStyle="fullScreen" id="hJ2-Po-ojv"/>
                         <segue destination="CfA-OQ-grr" kind="presentation" identifier="HomeToNewDocument" id="wnN-DC-2EX"/>
                         <segue destination="LrJ-0E-Lb7" kind="show" identifier="HomeToDocument" id="r1b-pv-KfI"/>
+                        <segue destination="vn8-Pa-jAm" kind="show" identifier="HomeToAccount" id="pbg-hu-HXa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -90,7 +90,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrq-D0-I0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152.17391304347828" y="1443.75"/>
+            <point key="canvasLocation" x="-520" y="1487"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="0rf-am-VGm">
+            <objects>
+                <viewController id="vn8-Pa-jAm" customClass="AccountViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DgG-41-2dF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account" translatesAutoresizingMaskIntoConstraints="NO" id="UJR-wd-mbi">
+                                <rect key="frame" x="107" y="88" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="NBW-Yj-f8t"/>
+                                    <constraint firstAttribute="width" constant="200" id="O6N-Tp-cU3"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-GU-jEz">
+                                <rect key="frame" x="162" y="288" width="90.5" height="31"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit photo"/>
+                                <connections>
+                                    <action selector="editPhotoPressed:" destination="vn8-Pa-jAm" eventType="touchUpInside" id="C3r-PV-z85"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRI-Iq-q2k">
+                                <rect key="frame" x="173" y="319" width="68.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o73-of-8AG">
+                                <rect key="frame" x="158" y="349" width="98" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jMM-Fx-zKK">
+                                <rect key="frame" x="0.0" y="382" width="414" height="514"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fSp-Hd-OVc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="o73-of-8AG" firstAttribute="centerX" secondItem="DgG-41-2dF" secondAttribute="centerX" id="08x-sJ-rUt"/>
+                            <constraint firstItem="UJR-wd-mbi" firstAttribute="centerX" secondItem="DgG-41-2dF" secondAttribute="centerX" id="0MS-La-2di"/>
+                            <constraint firstItem="g2Q-GU-jEz" firstAttribute="top" secondItem="UJR-wd-mbi" secondAttribute="bottom" id="7iD-CE-S7i"/>
+                            <constraint firstItem="o73-of-8AG" firstAttribute="top" secondItem="DRI-Iq-q2k" secondAttribute="bottom" id="K3h-fa-WYT"/>
+                            <constraint firstItem="g2Q-GU-jEz" firstAttribute="centerX" secondItem="DgG-41-2dF" secondAttribute="centerX" id="Mgo-Ly-75j"/>
+                            <constraint firstItem="jMM-Fx-zKK" firstAttribute="top" secondItem="o73-of-8AG" secondAttribute="bottom" constant="16" id="N1v-PA-1YJ"/>
+                            <constraint firstItem="DRI-Iq-q2k" firstAttribute="centerX" secondItem="DgG-41-2dF" secondAttribute="centerX" id="V1k-Va-Okb"/>
+                            <constraint firstItem="jMM-Fx-zKK" firstAttribute="trailing" secondItem="fSp-Hd-OVc" secondAttribute="trailing" id="WTt-hY-N6D"/>
+                            <constraint firstItem="UJR-wd-mbi" firstAttribute="top" secondItem="fSp-Hd-OVc" secondAttribute="top" id="hAL-q6-Jzg"/>
+                            <constraint firstItem="DRI-Iq-q2k" firstAttribute="top" secondItem="g2Q-GU-jEz" secondAttribute="bottom" id="kEZ-mO-LzV"/>
+                            <constraint firstItem="jMM-Fx-zKK" firstAttribute="leading" secondItem="fSp-Hd-OVc" secondAttribute="leading" id="kVM-AC-xSu"/>
+                            <constraint firstAttribute="bottom" secondItem="jMM-Fx-zKK" secondAttribute="bottom" id="puN-FW-vfX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="C9A-uj-qMN">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="f5r-1Z-gb2">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="signOutPressed:" destination="vn8-Pa-jAm" id="b1g-2g-hIx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="o73-of-8AG" id="QY8-cZ-gCA"/>
+                        <outlet property="nameLabel" destination="DRI-Iq-q2k" id="b5t-fT-fA5"/>
+                        <outlet property="tableView" destination="jMM-Fx-zKK" id="6Yx-ag-pgO"/>
+                        <outlet property="userImageView" destination="UJR-wd-mbi" id="mj8-16-JnG"/>
+                        <segue destination="AZs-Rm-LGu" kind="presentation" identifier="AccountToWelcome" modalPresentationStyle="fullScreen" id="mh8-Hy-uNR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9B-yU-6ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189.85507246376812" y="1486.6071428571429"/>
         </scene>
         <!--New Document View Controller-->
         <scene sceneID="fGF-CH-Yko">
@@ -781,7 +859,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5mu-xm-89z"/>
+        <segue reference="9Pg-5W-ylh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Account" width="170.5" height="170.5"/>

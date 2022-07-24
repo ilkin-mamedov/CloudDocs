@@ -17,6 +17,7 @@
 		3B306D94286758B20052CEE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B306D9228674A780052CEE3 /* GoogleService-Info.plist */; };
 		3B306D98286766440052CEE3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B306D97286766440052CEE3 /* SignUpViewController.swift */; };
 		3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B306D9928676B840052CEE3 /* SignInViewController.swift */; };
+		3B30DF87288DAD56004B055B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30DF86288DAD56004B055B /* AccountViewController.swift */; };
 		3B628A652868770700B01318 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B628A642868770700B01318 /* PasscodeViewController.swift */; };
 		3B628A692868987800B01318 /* AddDocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B628A672868987800B01318 /* AddDocumentCollectionViewCell.swift */; };
 		3B628A6A2868987800B01318 /* AddDocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B628A682868987800B01318 /* AddDocumentCollectionViewCell.xib */; };
@@ -57,6 +58,7 @@
 		3B306D962867622D0052CEE3 /* CloudDocs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudDocs.entitlements; sourceTree = "<group>"; };
 		3B306D97286766440052CEE3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3B306D9928676B840052CEE3 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3B30DF86288DAD56004B055B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		3B628A642868770700B01318 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		3B628A672868987800B01318 /* AddDocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B628A682868987800B01318 /* AddDocumentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDocumentCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				3B628A6B2868B10800B01318 /* Auth */,
 				3B628A642868770700B01318 /* PasscodeViewController.swift */,
 				3B306D732867367C0052CEE3 /* HomeViewController.swift */,
+				3B30DF86288DAD56004B055B /* AccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			files = (
 				3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */,
 				3B306D742867367C0052CEE3 /* HomeViewController.swift in Sources */,
+				3B30DF87288DAD56004B055B /* AccountViewController.swift in Sources */,
 				3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */,
 				3B306D882867433C0052CEE3 /* WelcomeViewController.swift in Sources */,
 				3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */,

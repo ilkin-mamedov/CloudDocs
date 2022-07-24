@@ -12,8 +12,8 @@
 "Good morning" = "Доброе утро";
 "Good afternoon" = "Добрый день";
 "Good evening" = "Добрый вечер";
-"Edit Photo" = "Изменить фото";
-"Edit Name" = "Изменить имя";
+"Edit photo" = "Изменить фото";
+"Edit name" = "Изменить имя";
 "Name is Changed" = "Имя изменено";
 "Cancel" = "Отмена";
 "Save" = "Сохранить";
@@ -100,3 +100,11 @@
 "Policy number" = "Номер полиса";
 "Policy cost" = "Стоимость полиса";
 "Add scan of document" = "Добавить скан документа";
+"Sign In" = "Войти";
+"Edit e-mail address" = "Изменить эл. почту";
+"Edit password" = "Изменить пароль";
+"Delete account" = "Удалить аккаунт";
+"Sign In to Edit Account" = "Войдите, чтобы редактировать аккаунт";
+"Error" = "Ошибка";
+"E-mail Address is Changed" = "Эл. почта изменена";
+"Password is Changed" = "Пароль изменен";

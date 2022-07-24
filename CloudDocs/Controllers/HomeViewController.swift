@@ -12,7 +12,6 @@ class HomeViewController: UIViewController {
     var ref: DatabaseReference!
     var storageRef: StorageReference!
     var user: User?
-    var imagePicker = UIImagePickerController()
     
     var accountButton: ImageBarButton!
     
@@ -137,68 +136,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func accountPressed() {
-        let alert = UIAlertController(title: user!.displayName, message: user!.email, preferredStyle: .actionSheet)
-
-        alert.view.tintColor = UIColor(named: "AccentColor")
-        
-        let editPhoto = UIAlertAction(title: "Edit Photo".localized(), style: .default) { action in
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-                
-                self.imagePicker.delegate = self
-                self.imagePicker.sourceType = .savedPhotosAlbum
-                self.imagePicker.allowsEditing = false
-                
-                self.present(self.imagePicker, animated: true)
-            }
-        }
-        
-        let editName = UIAlertAction(title: "Edit Name".localized(), style: .default) { action in
-            let nameAlert = UIAlertController(title: "What is your name?".localized(), message: "", preferredStyle: .alert)
-            
-            nameAlert.view.tintColor = UIColor(named: "AccentColor")
-            
-            nameAlert.addTextField { textField in
-                textField.placeholder = ""
-                textField.text = self.user!.displayName
-            }
-            
-            let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
-                nameAlert.self.dismiss(animated: true)
-            }
-
-            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
-                let changeRequest = self.user!.createProfileChangeRequest()
-                changeRequest.displayName = nameAlert.textFields![0].text
-                changeRequest.commitChanges()
-                SPAlert.present(title: "Name is Changed".localized(), preset: .done)
-            }
-            
-            nameAlert.addAction(cancel)
-            nameAlert.addAction(save)
-            
-            self.present(nameAlert, animated: true, completion: nil)
-        }
-
-        let signOut = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
-            do {
-                try Auth.auth().signOut()
-                self.performSegue(withIdentifier: "HomeToWelcome", sender: self)
-                UserDefaults.standard.removeObject(forKey: "passcode")
-            } catch {
-                print(error)
-            }
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
-            alert.self.dismiss(animated: true)
-        }
-
-        alert.addAction(editPhoto)
-        alert.addAction(editName)
-        alert.addAction(signOut)
-        alert.addAction(cancel)
-
-        self.present(alert, animated: true, completion: nil)
+        title = "CloudDocs"
+        performSegue(withIdentifier: "HomeToAccount", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -432,30 +371,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             self.present(activityViewController, animated: true, completion: nil)
         }
-    }
-}
-
-extension HomeViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: { () -> Void in })
-        
-        guard let image = info[.originalImage] as? UIImage else { return }
-        
-        accountButton.imageView.image = image
-        
-        let accountRef = storageRef!.child("\(user!.uid)/account.png")
-        
-        let accountUpload = accountRef.putData(image.pngData()!, metadata: nil) { (metadata, error) in
-            accountRef.downloadURL { (url, error) in
-                guard let downloadURL = url else { return }
-
-                let changeRequest = self.user!.createProfileChangeRequest()
-                changeRequest.photoURL = downloadURL
-                changeRequest.commitChanges()
-            }
-        }
-        
-        accountUpload.resume()
     }
 }

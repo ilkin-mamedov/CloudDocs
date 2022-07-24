@@ -127,3 +127,9 @@
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "zGr-e3-kph"; */
 "zGr-e3-kph.title" = "Назад";
+
+/* Class = "UIBarButtonItem"; title = "Sign Out"; ObjectID = "f5r-1Z-gb2"; */
+"f5r-1Z-gb2.title" = "Выйти";
+
+/* Class = "UIButton"; configuration.title = "Edit photo"; ObjectID = "g2Q-GU-jEz"; */
+"g2Q-GU-jEz.configuration.title" = "Изменить фото";
