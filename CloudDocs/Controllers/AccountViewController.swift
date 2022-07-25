@@ -12,12 +12,9 @@ class AccountViewController: UIViewController {
     var user: User?
     var imagePicker = UIImagePickerController()
     
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    let actions = ["Edit name".localized(), "Edit e-mail address".localized(), "Edit password".localized(), "Delete account".localized()]
+    let actions = ["Edit photo".localized(), "Edit name".localized(), "Edit e-mail address".localized(), "Edit password".localized(), "Delete account".localized()]
     
     var email = ""
     var password = ""
@@ -25,20 +22,15 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Account".localized()
+        
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
         
-        userImageView.layer.cornerRadius = 100
-        
-        if let safeUser = user {
-            userImageView.sd_setImage(with: safeUser.photoURL, placeholderImage: UIImage(named: "Account"))
-            nameLabel.text = safeUser.displayName
-            emailLabel.text = safeUser.email
-        }
-        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: "AccountTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -64,181 +56,209 @@ class AccountViewController: UIViewController {
         alert.addAction(signOut)
         alert.addAction(cancel)
         
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func editPhotoPressed(_ sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-            self.imagePicker.delegate = self
-            self.imagePicker.sourceType = .savedPhotosAlbum
-            self.imagePicker.allowsEditing = false
-            
-            self.present(self.imagePicker, animated: true)
-        }
-    }
-}
-
-extension AccountViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: { () -> Void in })
-        
-        guard let image = info[.originalImage] as? UIImage else { return }
-        
-        userImageView.image = image
-        
-        let accountRef = storageRef!.child("\(user!.uid)/account.png")
-        
-        let accountUpload = accountRef.putData(image.pngData()!, metadata: nil) { (metadata, error) in
-            accountRef.downloadURL { (url, error) in
-                guard let downloadURL = url else { return }
-                
-                let changeRequest = self.user!.createProfileChangeRequest()
-                changeRequest.photoURL = downloadURL
-                changeRequest.commitChanges()
-            }
-        }
-        
-        accountUpload.resume()
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actions.count
+        section == 0 ? 1 : actions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = actions[indexPath.row]
-        
-        if indexPath.row == (actions.count - 1) {
-            cell.textLabel?.textColor = .systemRed
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccountTableViewCell", for: indexPath) as! AccountTableViewCell
+            
+            cell.accountImageView.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "Account"))
+            cell.nameLabel.text = user?.displayName
+            cell.emailLabel.text = user?.email
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            
+            cell.textLabel?.text = actions[indexPath.row]
+            
+            if indexPath.row == (actions.count - 1) {
+                cell.textLabel?.textColor = .systemRed
+            }
+            
+            return cell
         }
-        
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        } else {
+            return 44
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 && !email.isEmpty && !password.isEmpty {
-            let nameAlert = UIAlertController(title: "What is your name?".localized(), message: "", preferredStyle: .alert)
-            
-            nameAlert.view.tintColor = UIColor(named: "AccentColor")
-            
-            nameAlert.addTextField { textField in
-                textField.placeholder = ""
-                textField.text = self.user!.displayName
-            }
-            
-            let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
-                nameAlert.self.dismiss(animated: true)
-            }
-            
-            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
-                let changeRequest = self.user!.createProfileChangeRequest()
-                changeRequest.displayName = nameAlert.textFields![0].text
-                changeRequest.commitChanges()
-                self.nameLabel.text = nameAlert.textFields![0].text
-                SPAlert.present(title: "Name is Changed".localized(), preset: .done)
-            }
-            
-            nameAlert.addAction(cancel)
-            nameAlert.addAction(save)
-            
-            self.present(nameAlert, animated: true, completion: nil)
-        } else if indexPath.row == 1 && !email.isEmpty && !password.isEmpty {
-            let emailAlert = UIAlertController(title: "E-mail Address".localized(), message: "", preferredStyle: .alert)
-            
-            emailAlert.view.tintColor = UIColor(named: "AccentColor")
-            
-            emailAlert.addTextField { textField in
-                textField.placeholder = ""
-                textField.text = self.user!.email
-            }
-            
-            let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
-                emailAlert.self.dismiss(animated: true)
-            }
-            
-            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
-                let credential = EmailAuthProvider.credential(withEmail: self.email, password: self.password)
+        if indexPath.section != 0 {
+            if indexPath.row == 0 {
+                if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+                    self.imagePicker.delegate = self
+                    self.imagePicker.sourceType = .savedPhotosAlbum
+                    self.imagePicker.allowsEditing = false
+                    
+                    self.present(self.imagePicker, animated: true)
+                }
+            } else if indexPath.row == 1 {
+                let nameAlert = UIAlertController(title: "What is your name?".localized(), message: "", preferredStyle: .alert)
                 
-                self.user!.reauthenticate(with: credential) { result, error  in
-                    if error != nil {
-                        SPAlert.present(title: "Error", preset: .error)
-                    } else {
-                        self.user!.updateEmail(to: emailAlert.textFields![0].text!) { error in
-                            if error != nil {
-                                SPAlert.present(title: "Error", preset: .error)
-                            } else {
-                                self.emailLabel.text = emailAlert.textFields![0].text!
-                                SPAlert.present(title: "E-mail Address is Changed".localized(), preset: .done)
+                nameAlert.view.tintColor = UIColor(named: "AccentColor")
+                
+                nameAlert.addTextField { textField in
+                    textField.placeholder = ""
+                    textField.text = self.user!.displayName
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
+                    nameAlert.self.dismiss(animated: true)
+                }
+                
+                let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
+                    let changeRequest = self.user!.createProfileChangeRequest()
+                    changeRequest.displayName = nameAlert.textFields![0].text
+                    changeRequest.commitChanges()
+                    (tableView.visibleCells[0] as! AccountTableViewCell).nameLabel.text = nameAlert.textFields![0].text
+                    SPAlert.present(title: "Name is Changed".localized(), preset: .done)
+                }
+                
+                nameAlert.addAction(cancel)
+                nameAlert.addAction(save)
+                
+                self.present(nameAlert, animated: true, completion: nil)
+            } else if indexPath.row == 2 && !email.isEmpty && !password.isEmpty {
+                let emailAlert = UIAlertController(title: "E-mail Address".localized(), message: "", preferredStyle: .alert)
+                
+                emailAlert.view.tintColor = UIColor(named: "AccentColor")
+                
+                emailAlert.addTextField { textField in
+                    textField.placeholder = ""
+                    textField.text = self.user!.email
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
+                    emailAlert.self.dismiss(animated: true)
+                }
+                
+                let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
+                    let credential = EmailAuthProvider.credential(withEmail: self.email, password: self.password)
+                    
+                    self.user!.reauthenticate(with: credential) { result, error  in
+                        if error != nil {
+                            SPAlert.present(title: "Error".localized(), preset: .error)
+                        } else {
+                            self.user!.updateEmail(to: emailAlert.textFields![0].text!) { error in
+                                if error != nil {
+                                    SPAlert.present(title: "Error".localized(), preset: .error)
+                                } else {
+                                    (tableView.visibleCells[0] as! AccountTableViewCell).emailLabel.text = emailAlert.textFields![0].text
+                                    SPAlert.present(title: "E-mail Address is Changed".localized(), preset: .done)
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-            emailAlert.addAction(cancel)
-            emailAlert.addAction(save)
-            
-            self.present(emailAlert, animated: true, completion: nil)
-        } else if indexPath.row == 2 && !email.isEmpty && !password.isEmpty {
-            let passwordAlert = UIAlertController(title: "Password".localized(), message: "", preferredStyle: .alert)
-            
-            passwordAlert.view.tintColor = UIColor(named: "AccentColor")
-            
-            passwordAlert.addTextField { textField in
-                textField.isSecureTextEntry = true
-                textField.placeholder = "Password"
-            }
-            
-            passwordAlert.addTextField { textField in
-                textField.isSecureTextEntry = true
-                textField.placeholder = "Confirm Password"
-            }
-            
-            let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
-                passwordAlert.self.dismiss(animated: true)
-            }
-            
-            let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
-                let credential = EmailAuthProvider.credential(withEmail: self.email, password: self.password)
                 
-                self.user!.reauthenticate(with: credential) { result, error  in
-                    if error != nil {
-                        SPAlert.present(title: "Error", preset: .error)
-                    } else {
-                        self.user!.updatePassword(to: passwordAlert.textFields![0].text!) { error in
-                            SPAlert.present(title: "Password is Changed".localized(), preset: .done)
+                emailAlert.addAction(cancel)
+                emailAlert.addAction(save)
+                
+                self.present(emailAlert, animated: true, completion: nil)
+            } else if indexPath.row == 3 && !email.isEmpty && !password.isEmpty {
+                let passwordAlert = UIAlertController(title: "Password".localized(), message: "", preferredStyle: .alert)
+                
+                passwordAlert.view.tintColor = UIColor(named: "AccentColor")
+                
+                passwordAlert.addTextField { textField in
+                    textField.isSecureTextEntry = true
+                    textField.placeholder = "Password"
+                }
+                
+                passwordAlert.addTextField { textField in
+                    textField.isSecureTextEntry = true
+                    textField.placeholder = "Confirm Password"
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
+                    passwordAlert.self.dismiss(animated: true)
+                }
+                
+                let save = UIAlertAction(title: "Save".localized(), style: .default) { action in
+                    let credential = EmailAuthProvider.credential(withEmail: self.email, password: self.password)
+                    
+                    self.user!.reauthenticate(with: credential) { result, error  in
+                        if error != nil {
+                            SPAlert.present(title: "Error".localized(), preset: .error)
+                        } else {
+                            self.user!.updatePassword(to: passwordAlert.textFields![0].text!) { error in
+                                SPAlert.present(title: "Password is Changed".localized(), preset: .done)
+                            }
                         }
                     }
                 }
-            }
-            
-            passwordAlert.addAction(cancel)
-            passwordAlert.addAction(save)
-            
-            self.present(passwordAlert, animated: true, completion: nil)
-        } else if indexPath.row == 3 && !email.isEmpty && !password.isEmpty  {
-            user!.delete { error in
-                if error != nil {
-                    SPAlert.present(title: "Error", preset: .error)
-                } else {
-                    do {
-                        try Auth.auth().signOut()
-                        self.performSegue(withIdentifier: "AccountToWelcome", sender: self)
-                        UserDefaults.standard.removeObject(forKey: "passcode")
-                    } catch {
-                        print(error)
+                
+                passwordAlert.addAction(cancel)
+                passwordAlert.addAction(save)
+                
+                self.present(passwordAlert, animated: true, completion: nil)
+            } else if indexPath.row == 4 && !email.isEmpty && !password.isEmpty {
+                let deleteAlert = UIAlertController(title: .none, message: .none, preferredStyle: .actionSheet)
+                
+                deleteAlert.view.tintColor = UIColor(named: "AccentColor")
+                
+                let deleteAccount = UIAlertAction(title: "Delete account".localized(), style: .destructive) { action in
+                    self.ref.child("users").child(self.user!.uid).observeSingleEvent(of: .value) { snapshot in
+                        if snapshot.exists() {
+                            SPAlert.present(title: "Please, delete all your documents".localized(), preset: .error)
+                        } else {
+                            let credential = EmailAuthProvider.credential(withEmail: self.email, password: self.password)
+                            
+                            self.user!.reauthenticate(with: credential) { result, error  in
+                                if error != nil {
+                                    SPAlert.present(title: "Error".localized(), preset: .error)
+                                } else {
+                                    self.user!.delete { error in
+                                        if error != nil {
+                                            SPAlert.present(title: "Error".localized(), preset: .error)
+                                        } else {
+                                            self.storageRef.child(self.user!.uid).child("account.png").delete { _ in }
+                                            do {
+                                                try Auth.auth().signOut()
+                                                self.performSegue(withIdentifier: "AccountToWelcome", sender: self)
+                                                UserDefaults.standard.removeObject(forKey: "passcode")
+                                            } catch {
+                                                print(error)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+                
+                let cancel = UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
+                    deleteAlert.self.dismiss(animated: true)
+                }
+                
+                deleteAlert.addAction(deleteAccount)
+                deleteAlert.addAction(cancel)
+                
+                present(deleteAlert, animated: true, completion: nil)
+            } else {
+                signIn()
             }
         } else {
-            signIn()
+            
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -271,5 +291,30 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         signInAlert.addAction(signIn)
         
         self.present(signInAlert, animated: true, completion: nil)
+    }
+}
+
+extension AccountViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: { () -> Void in })
+        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        
+        let accountRef = storageRef!.child("\(user!.uid)/account.png")
+        
+        let accountUpload = accountRef.putData(image.pngData()!, metadata: nil) { (metadata, error) in
+            accountRef.downloadURL { (url, error) in
+                guard let downloadURL = url else { return }
+                
+                let changeRequest = self.user!.createProfileChangeRequest()
+                changeRequest.photoURL = downloadURL
+                changeRequest.commitChanges()
+                
+                SPAlert.present(title: "Photo is Changed".localized(), preset: .done)
+            }
+        }
+        
+        accountUpload.resume()
     }
 }

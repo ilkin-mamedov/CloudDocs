@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseAuth
+import SPAlert
 
 class SignInViewController: UIViewController {
 
@@ -48,6 +49,19 @@ class SignInViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
                 if error == nil {
                     self!.performSegue(withIdentifier: "SignInToPasscode", sender: self)
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func forgottenPasswordPressed(_ sender: UIButton) {
+        if !emailTextField.text!.isEmpty {
+            Auth.auth().sendPasswordReset(withEmail: emailTextField.text!) { error in
+                if error == nil {
+                    SPAlert.present(title: "Please, check your e-mail".localized(), preset: .done)
+                } else {
+                    SPAlert.present(title: "Error".localized(), preset: .error)
                 }
             }
         }

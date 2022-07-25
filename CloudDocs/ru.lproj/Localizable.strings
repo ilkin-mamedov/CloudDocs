@@ -100,11 +100,16 @@
 "Policy number" = "Номер полиса";
 "Policy cost" = "Стоимость полиса";
 "Add scan of document" = "Добавить скан документа";
+"Account" = "Аккаунт";
 "Sign In" = "Войти";
 "Edit e-mail address" = "Изменить эл. почту";
 "Edit password" = "Изменить пароль";
 "Delete account" = "Удалить аккаунт";
 "Sign In to Edit Account" = "Войдите, чтобы редактировать аккаунт";
 "Error" = "Ошибка";
+"Photo is Changed" = "Фото изменено";
 "E-mail Address is Changed" = "Эл. почта изменена";
 "Password is Changed" = "Пароль изменен";
+"Please, delete all your documents" = "Пожалуйста, удалите все Ваши документы";
+"Please, check your e-mail" = "Пожалуйста, проверьте Вашу эл. почту";
+"Optional" = "Опционально";

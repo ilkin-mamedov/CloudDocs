@@ -36,6 +36,8 @@
 		3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42D2869E343002162F1 /* NewDocument.swift */; };
 		3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */; };
 		3BA4D4342869FF84002162F1 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4332869FF84002162F1 /* DocumentViewController.swift */; };
+		3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */; };
+		3BC8F42B288EB10E00D8DE18 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */; };
 		3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */; };
 		3BDD2974286B4AA4003EC325 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */; };
 		3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */; };
@@ -78,6 +80,8 @@
 		3BA4D42D2869E343002162F1 /* NewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocument.swift; sourceTree = "<group>"; };
 		3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataSource.swift; sourceTree = "<group>"; };
 		3BA4D4332869FF84002162F1 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+RoundedView.swift"; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */,
 				3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */,
 				3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */,
+				3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */,
+				3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B306D7C2867367F0052CEE3 /* LaunchScreen.storyboard in Resources */,
+				3BC8F42B288EB10E00D8DE18 /* AccountTableViewCell.xib in Resources */,
 				3B628A6A2868987800B01318 /* AddDocumentCollectionViewCell.xib in Resources */,
 				3B306D94286758B20052CEE3 /* GoogleService-Info.plist in Resources */,
 				3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */,
@@ -365,6 +372,7 @@
 				3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */,
 				3B306D742867367C0052CEE3 /* HomeViewController.swift in Sources */,
 				3B30DF87288DAD56004B055B /* AccountViewController.swift in Sources */,
+				3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */,
 				3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */,
 				3B306D882867433C0052CEE3 /* WelcomeViewController.swift in Sources */,
 				3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */,
