@@ -71,6 +71,13 @@ class DocumentViewController: UIViewController {
             alert.view.tintColor = UIColor(named: "AccentColor")
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DocumentToPreview" {
+            let previewViewController = segue.destination as! PreviewViewController
+            previewViewController.id = id
+        }
+    }
 }
 
 extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
@@ -132,6 +139,8 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row != fields.count {
             UIPasteboard.general.string = fields[indexPath.row].subtitle
             SPAlert.present(title: "Copied to Clipboard".localized(), preset: .done)
+        } else {
+            performSegue(withIdentifier: "DocumentToPreview", sender: self)
         }
         documentFieldsTableView.deselectRow(at: indexPath, animated: true)
     }

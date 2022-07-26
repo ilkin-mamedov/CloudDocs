@@ -86,11 +86,42 @@
                     </navigationItem>
                     <connections>
                         <outlet property="documentFieldsTableView" destination="312-Pf-fBr" id="PFe-Vi-uan"/>
+                        <segue destination="fGB-TA-syy" kind="show" identifier="DocumentToPreview" id="yx9-pQ-ABM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrq-D0-I0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-520" y="1487"/>
+            <point key="canvasLocation" x="275" y="1487"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="Tys-e2-3Cc">
+            <objects>
+                <viewController id="fGB-TA-syy" customClass="PreviewViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mmq-JU-ZtV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FZf-N4-qiL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f4y-Pn-hcb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FZf-N4-qiL" firstAttribute="leading" secondItem="f4y-Pn-hcb" secondAttribute="leading" id="7Lx-zW-WbZ"/>
+                            <constraint firstItem="f4y-Pn-hcb" firstAttribute="bottom" secondItem="FZf-N4-qiL" secondAttribute="bottom" id="F7S-Gf-0Pa"/>
+                            <constraint firstItem="f4y-Pn-hcb" firstAttribute="trailing" secondItem="FZf-N4-qiL" secondAttribute="trailing" id="FBd-qq-ijw"/>
+                            <constraint firstItem="FZf-N4-qiL" firstAttribute="top" secondItem="f4y-Pn-hcb" secondAttribute="top" id="HUP-Z0-NOH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xDz-Ho-5GP"/>
+                    <connections>
+                        <outlet property="documentImageView" destination="FZf-N4-qiL" id="iJU-Do-mO6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNw-wp-YFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="274" y="2192"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="0rf-am-VGm">
@@ -129,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9B-yU-6ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="189.85507246376812" y="1486.6071428571429"/>
+            <point key="canvasLocation" x="619" y="755"/>
         </scene>
         <!--New Document View Controller-->
         <scene sceneID="fGF-CH-Yko">
@@ -168,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ7-hR-yap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1345" y="755"/>
+            <point key="canvasLocation" x="-584" y="2192"/>
         </scene>
         <!--Add Document View Controller-->
         <scene sceneID="5hq-3e-LTT">
@@ -193,7 +224,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OqD-Qo-jYp">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="9ud-YJ-QeP">
+                        <barButtonItem key="rightBarButtonItem" title="Add" style="done" id="9ud-YJ-QeP">
                             <color key="tintColor" name="AccentColor"/>
                             <connections>
                                 <action selector="addPressed:" destination="zgm-qk-bYn" id="FGp-Sm-yGk"/>
@@ -206,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2f-AZ-6NC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2115.9420289855075" y="754.6875"/>
+            <point key="canvasLocation" x="-584" y="2893"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="aBf-II-zyN">
@@ -297,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnh-Jt-HiE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1345" y="-320"/>
+            <point key="canvasLocation" x="-3923" y="757"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="dmB-DS-WE2">
@@ -406,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmA-Xh-QnW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2114" y="-628"/>
+            <point key="canvasLocation" x="-3159" y="339"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="KtR-fP-dN7">
@@ -453,7 +484,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jy-bN-Hv7">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jy-bN-Hv7">
                                 <rect key="frame" x="16" y="336" width="382" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ck1-5f-Aof"/>
@@ -497,6 +528,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="I5q-My-U6i" id="g0l-yh-Wj4"/>
+                        <outlet property="forgottenPasswordButton" destination="9Jy-bN-Hv7" id="7jX-N1-NNW"/>
                         <outlet property="passwordTextField" destination="m9w-6N-eLA" id="oUE-yO-Odh"/>
                         <outlet property="signInButton" destination="aIA-QZ-rLN" id="oLL-BB-gj9"/>
                         <segue destination="ib5-58-Ph5" kind="presentation" identifier="SignInToPasscode" modalPresentationStyle="fullScreen" id="Clf-s7-Iap"/>
@@ -504,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zox-bW-gtE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="46"/>
+            <point key="canvasLocation" x="-3159" y="1049"/>
         </scene>
         <!--Passcode View Controller-->
         <scene sceneID="l15-qh-e0u">
@@ -754,7 +786,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGA-rW-iOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1664" y="757"/>
+            <point key="canvasLocation" x="-1636" y="757"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wAf-Dh-kn9">
@@ -792,7 +824,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ow2-Gi-c1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="-320"/>
+            <point key="canvasLocation" x="-4719" y="757"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lhT-F1-1KY">
@@ -829,7 +861,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Px8-en-eRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="755"/>
+            <point key="canvasLocation" x="-583" y="1487"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

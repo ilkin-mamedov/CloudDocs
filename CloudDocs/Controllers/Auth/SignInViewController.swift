@@ -7,12 +7,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var forgottenPasswordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController!.navigationBar.tintColor = UIColor(named: "AccentColor")
         
+        emailTextField.delegate = self
         emailTextField.layer.cornerRadius = 5
         passwordTextField.layer.cornerRadius = 5
         signInButton.layer.cornerRadius = 5
@@ -64,6 +66,21 @@ class SignInViewController: UIViewController {
                     SPAlert.present(title: "Error".localized(), preset: .error)
                 }
             }
+        }
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        forgottenPasswordButton.isEnabled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text!.isEmpty {
+            forgottenPasswordButton.isEnabled = false
+        } else {
+            forgottenPasswordButton.isEnabled = true
         }
     }
 }
