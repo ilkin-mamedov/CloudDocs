@@ -133,3 +133,15 @@
 
 /* Class = "UIButton"; configuration.title = "Forgotten your password?"; ObjectID = "9Jy-bN-Hv7"; */
 "9Jy-bN-Hv7.configuration.title" = "Забыли свой пароль?";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "Dyg-mh-NhV"; */
+"Dyg-mh-NhV.title" = "Отмена";
+
+/* Class = "UIButton"; configuration.title = "Generate QR code"; ObjectID = "UAb-Qc-Pl5"; */
+"UAb-Qc-Pl5.configuration.title" = "Сгенерировать QR код";
+
+/* Class = "UILabel"; text = "Show this QR code to another person who has the CloudDocs app."; ObjectID = "1D8-mY-tGd"; */
+"1D8-mY-tGd.text" = "Покажите этот QR код другому человеку, у которого есть приложение CloudDocs.";
+
+/* Class = "UILabel"; text = "Scan the QR code of another person who has the CloudDocs app."; ObjectID = "QDd-2p-KxO"; */
+"QDd-2p-KxO.text" = "Отсканируйте QR код другого человека, у которого есть приложение CloudDocs.";

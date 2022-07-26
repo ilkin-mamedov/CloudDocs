@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Please, allow to continue scan document.</string>
+	<string>Please, allow to continue scan.</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

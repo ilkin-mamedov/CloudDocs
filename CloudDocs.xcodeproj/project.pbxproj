@@ -25,6 +25,7 @@
 		3B628A702868B29800B01318 /* NewDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B628A6E2868B29800B01318 /* NewDocumentTableViewCell.swift */; };
 		3B628A712868B29800B01318 /* NewDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B628A6F2868B29800B01318 /* NewDocumentTableViewCell.xib */; };
 		3B6B6F28288FDE910093A125 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6B6F27288FDE910093A125 /* PreviewViewController.swift */; };
+		3B6B6F2A288FF5E40093A125 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */; };
 		3B86044D286E247C004DDFC7 /* ScanDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */; };
 		3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */; };
 		3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B902CC12868DD150004900C /* AddDocumentViewController.swift */; };
@@ -37,6 +38,8 @@
 		3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42D2869E343002162F1 /* NewDocument.swift */; };
 		3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */; };
 		3BA4D4342869FF84002162F1 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4332869FF84002162F1 /* DocumentViewController.swift */; };
+		3BB77C74288FFF0700B5247B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C73288FFF0700B5247B /* ScannerViewController.swift */; };
+		3BB77C76289009B300B5247B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C75289009B300B5247B /* SharedViewController.swift */; };
 		3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */; };
 		3BC8F42B288EB10E00D8DE18 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */; };
 		3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */; };
@@ -69,6 +72,7 @@
 		3B628A6E2868B29800B01318 /* NewDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		3B628A6F2868B29800B01318 /* NewDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		3B6B6F27288FDE910093A125 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		3B860453286E4B5F004DDFC7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		3BA4D42D2869E343002162F1 /* NewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocument.swift; sourceTree = "<group>"; };
 		3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataSource.swift; sourceTree = "<group>"; };
 		3BA4D4332869FF84002162F1 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		3BB77C73288FFF0700B5247B /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		3BB77C75289009B300B5247B /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 				3B628A642868770700B01318 /* PasscodeViewController.swift */,
 				3B306D732867367C0052CEE3 /* HomeViewController.swift */,
 				3B30DF86288DAD56004B055B /* AccountViewController.swift */,
+				3BB77C73288FFF0700B5247B /* ScannerViewController.swift */,
+				3BB77C75289009B300B5247B /* SharedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 				3B902CC12868DD150004900C /* AddDocumentViewController.swift */,
 				3BA4D4332869FF84002162F1 /* DocumentViewController.swift */,
 				3B6B6F27288FDE910093A125 /* PreviewViewController.swift */,
+				3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -387,6 +396,8 @@
 				3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */,
 				3B306D882867433C0052CEE3 /* WelcomeViewController.swift in Sources */,
 				3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */,
+				3BB77C76289009B300B5247B /* SharedViewController.swift in Sources */,
+				3BB77C74288FFF0700B5247B /* ScannerViewController.swift in Sources */,
 				3B86044D286E247C004DDFC7 /* ScanDocumentTableViewCell.swift in Sources */,
 				3B306D702867367C0052CEE3 /* AppDelegate.swift in Sources */,
 				3B628A652868770700B01318 /* PasscodeViewController.swift in Sources */,
@@ -404,6 +415,7 @@
 				3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */,
 				3B628A6D2868B19B00B01318 /* NewDocumentViewController.swift in Sources */,
 				3BA4D42C2869E31D002162F1 /* DocumentType.swift in Sources */,
+				3B6B6F2A288FF5E40093A125 /* QRCodeViewController.swift in Sources */,
 				3BA4D41F28692AD8002162F1 /* Document.swift in Sources */,
 				3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */,
 			);

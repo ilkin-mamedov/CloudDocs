@@ -48,11 +48,70 @@
                         <segue destination="CfA-OQ-grr" kind="presentation" identifier="HomeToNewDocument" id="wnN-DC-2EX"/>
                         <segue destination="LrJ-0E-Lb7" kind="show" identifier="HomeToDocument" id="r1b-pv-KfI"/>
                         <segue destination="vn8-Pa-jAm" kind="show" identifier="HomeToAccount" id="pbg-hu-HXa"/>
+                        <segue destination="q12-Tc-MRf" kind="presentation" identifier="HomeToScanner" id="eU2-16-nLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-151" y="758"/>
+        </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="6EA-Xg-D00">
+            <objects>
+                <viewController id="eVV-AX-Q1V" customClass="ScannerViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QC2-gD-xGD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudDocs Sharing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heJ-Xk-uaz">
+                                <rect key="frame" x="72" y="56" width="270" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan the QR code of another person who has the CloudDocs app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDd-2p-KxO">
+                                <rect key="frame" x="16" y="100" width="382" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1t-BQ-N2i">
+                                <rect key="frame" x="82" y="296" width="250" height="250"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="hPA-j8-a2C"/>
+                                    <constraint firstAttribute="height" constant="250" id="lH6-lF-f2E"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HCE-Ll-FQ6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QDd-2p-KxO" firstAttribute="top" secondItem="heJ-Xk-uaz" secondAttribute="bottom" constant="8" id="89Z-SQ-uIS"/>
+                            <constraint firstItem="heJ-Xk-uaz" firstAttribute="centerX" secondItem="QC2-gD-xGD" secondAttribute="centerX" id="EOO-SG-K0y"/>
+                            <constraint firstItem="heJ-Xk-uaz" firstAttribute="top" secondItem="HCE-Ll-FQ6" secondAttribute="top" id="ZpF-gG-ttY"/>
+                            <constraint firstItem="QDd-2p-KxO" firstAttribute="leading" secondItem="HCE-Ll-FQ6" secondAttribute="leading" constant="16" id="bOE-NG-Y4r"/>
+                            <constraint firstItem="K1t-BQ-N2i" firstAttribute="centerY" secondItem="QC2-gD-xGD" secondAttribute="centerY" id="hJM-7b-DhS"/>
+                            <constraint firstItem="HCE-Ll-FQ6" firstAttribute="trailing" secondItem="QDd-2p-KxO" secondAttribute="trailing" constant="16" id="s9X-yf-vn8"/>
+                            <constraint firstItem="K1t-BQ-N2i" firstAttribute="centerX" secondItem="QC2-gD-xGD" secondAttribute="centerX" id="uP3-oK-ATi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="W8V-57-FER">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Dyg-mh-NhV">
+                            <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="eVV-AX-Q1V" id="ZRj-bx-Phd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="qrCodeView" destination="K1t-BQ-N2i" id="aH4-ga-r8d"/>
+                        <segue destination="ufG-0m-HNR" kind="show" identifier="ScannerToShared" id="mgF-NC-NFO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="su8-KR-jCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="2220"/>
         </scene>
         <!--Document View Controller-->
         <scene sceneID="pcc-dr-K2R">
@@ -63,17 +122,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="312-Pf-fBr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPr-0u-dqV">
+                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-Qc-Pl5">
+                                        <rect key="frame" x="16" y="8" width="382" height="40"/>
+                                        <color key="backgroundColor" name="AddDocumentBackgroundColor"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="qrcode" catalog="system" title="Generate QR code" imagePadding="4"/>
+                                        <connections>
+                                            <action selector="generateQRCodePressed:" destination="LrJ-0E-Lb7" eventType="touchUpInside" id="8Ho-hV-QoJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UAb-Qc-Pl5" secondAttribute="trailing" constant="16" id="0Bi-o5-Ctu"/>
+                                    <constraint firstItem="UAb-Qc-Pl5" firstAttribute="leading" secondItem="RPr-0u-dqV" secondAttribute="leading" constant="16" id="MmZ-IF-nnw"/>
+                                    <constraint firstAttribute="height" constant="56" id="gdU-by-fmt"/>
+                                    <constraint firstItem="UAb-Qc-Pl5" firstAttribute="top" secondItem="RPr-0u-dqV" secondAttribute="top" constant="8" id="pAE-Na-tja"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAb-Qc-Pl5" secondAttribute="bottom" constant="8" id="zBV-P8-hXb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ikj-fH-TkG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="312-Pf-fBr" secondAttribute="bottom" id="2aL-jV-CCw"/>
                             <constraint firstItem="312-Pf-fBr" firstAttribute="top" secondItem="Ikj-fH-TkG" secondAttribute="top" id="Afi-bz-pzZ"/>
                             <constraint firstItem="312-Pf-fBr" firstAttribute="leading" secondItem="Ikj-fH-TkG" secondAttribute="leading" id="KAc-sa-PZg"/>
+                            <constraint firstItem="RPr-0u-dqV" firstAttribute="leading" secondItem="Ikj-fH-TkG" secondAttribute="leading" id="bhD-RC-nf1"/>
+                            <constraint firstItem="Ikj-fH-TkG" firstAttribute="trailing" secondItem="RPr-0u-dqV" secondAttribute="trailing" id="jxy-XV-6ag"/>
                             <constraint firstItem="312-Pf-fBr" firstAttribute="trailing" secondItem="Ikj-fH-TkG" secondAttribute="trailing" id="nHA-MC-cH7"/>
+                            <constraint firstItem="Ikj-fH-TkG" firstAttribute="bottom" secondItem="RPr-0u-dqV" secondAttribute="bottom" id="p2F-oI-QLq"/>
+                            <constraint firstItem="RPr-0u-dqV" firstAttribute="top" secondItem="312-Pf-fBr" secondAttribute="bottom" id="qYH-mO-9vn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dY8-yE-fLn">
@@ -86,12 +171,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="documentFieldsTableView" destination="312-Pf-fBr" id="PFe-Vi-uan"/>
+                        <outlet property="generateQRCodeButton" destination="UAb-Qc-Pl5" id="Ubp-5Q-eG9"/>
                         <segue destination="fGB-TA-syy" kind="show" identifier="DocumentToPreview" id="yx9-pQ-ABM"/>
+                        <segue destination="GGL-hp-aaa" kind="show" identifier="DocumentToQRCode" id="l6t-AJ-ook"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrq-D0-I0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="1487"/>
+            <point key="canvasLocation" x="619" y="1049"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="Tys-e2-3Cc">
@@ -121,7 +208,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNw-wp-YFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="274" y="2192"/>
+            <point key="canvasLocation" x="1390" y="1049"/>
+        </scene>
+        <!--Code View Controller-->
+        <scene sceneID="L0y-TA-t14">
+            <objects>
+                <viewController id="GGL-hp-aaa" customClass="QRCodeViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RWE-A2-rDp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MQA-vT-ljx">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="qak-Ln-OoY"/>
+                                    <constraint firstAttribute="width" constant="250" id="uBq-G1-YWi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudDocs Sharing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9H0-RK-Vn2">
+                                <rect key="frame" x="72" y="88" width="270" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show this QR code to another person who has the CloudDocs app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1D8-mY-tGd">
+                                <rect key="frame" x="16" y="132" width="382" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W1F-Ij-czM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1D8-mY-tGd" firstAttribute="leading" secondItem="RWE-A2-rDp" secondAttribute="leading" constant="16" id="O35-hk-7No"/>
+                            <constraint firstAttribute="trailing" secondItem="1D8-mY-tGd" secondAttribute="trailing" constant="16" id="Vq7-NZ-nMX"/>
+                            <constraint firstItem="MQA-vT-ljx" firstAttribute="centerY" secondItem="RWE-A2-rDp" secondAttribute="centerY" id="Yf1-jr-6L6"/>
+                            <constraint firstItem="9H0-RK-Vn2" firstAttribute="centerX" secondItem="RWE-A2-rDp" secondAttribute="centerX" id="bOK-ut-xJW"/>
+                            <constraint firstItem="1D8-mY-tGd" firstAttribute="top" secondItem="9H0-RK-Vn2" secondAttribute="bottom" constant="8" id="l15-Zb-Hcp"/>
+                            <constraint firstItem="MQA-vT-ljx" firstAttribute="centerX" secondItem="RWE-A2-rDp" secondAttribute="centerX" id="nIZ-Bj-1Ao"/>
+                            <constraint firstItem="9H0-RK-Vn2" firstAttribute="top" secondItem="W1F-Ij-czM" secondAttribute="top" id="pMS-Lz-Z6A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6gY-lc-sc0"/>
+                    <connections>
+                        <outlet property="qrCodeImageView" destination="MQA-vT-ljx" id="cC6-lK-0Xn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haH-lI-Ak0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="339"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="0rf-am-VGm">
@@ -160,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9B-yU-6ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="755"/>
+            <point key="canvasLocation" x="619" y="339"/>
         </scene>
         <!--New Document View Controller-->
         <scene sceneID="fGF-CH-Yko">
@@ -199,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ7-hR-yap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-584" y="2192"/>
+            <point key="canvasLocation" x="-888" y="2220"/>
         </scene>
         <!--Add Document View Controller-->
         <scene sceneID="5hq-3e-LTT">
@@ -237,7 +373,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2f-AZ-6NC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-584" y="2893"/>
+            <point key="canvasLocation" x="-888" y="2974"/>
+        </scene>
+        <!--Shared View Controller-->
+        <scene sceneID="dVo-d1-SEh">
+            <objects>
+                <viewController id="ufG-0m-HNR" customClass="SharedViewController" customModule="CloudDocs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kfY-Q8-R7e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zys-ex-C87">
+                                <rect key="frame" x="0.0" y="56" width="414" height="2.5"/>
+                                <color key="tintColor" name="AccentColor"/>
+                            </progressView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-y8-XCB">
+                                <rect key="frame" x="0.0" y="57.5" width="414" height="784.5"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Ik-tS-e3P"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qbe-y8-XCB" firstAttribute="leading" secondItem="Zys-ex-C87" secondAttribute="leading" id="4Hs-I5-amG"/>
+                            <constraint firstItem="8Ik-tS-e3P" firstAttribute="trailing" secondItem="Zys-ex-C87" secondAttribute="trailing" id="7Fc-wk-z69"/>
+                            <constraint firstAttribute="bottom" secondItem="qbe-y8-XCB" secondAttribute="bottom" id="Cm7-OX-Bva"/>
+                            <constraint firstItem="qbe-y8-XCB" firstAttribute="trailing" secondItem="Zys-ex-C87" secondAttribute="trailing" id="EWh-fB-Lvo"/>
+                            <constraint firstItem="qbe-y8-XCB" firstAttribute="top" secondItem="Zys-ex-C87" secondAttribute="bottom" id="cP8-t2-lNS"/>
+                            <constraint firstItem="Zys-ex-C87" firstAttribute="leading" secondItem="8Ik-tS-e3P" secondAttribute="leading" id="tX9-H1-xEf"/>
+                            <constraint firstItem="Zys-ex-C87" firstAttribute="top" secondItem="8Ik-tS-e3P" secondAttribute="top" id="zjH-OH-erG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="emu-H4-w6E"/>
+                    <connections>
+                        <outlet property="documentImageView" destination="qbe-y8-XCB" id="FAs-wi-WOW"/>
+                        <outlet property="progressBarView" destination="Zys-ex-C87" id="Xc5-Sc-a9W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7l1-1T-HSS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152.17391304347828" y="2973.8839285714284"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="aBf-II-zyN">
@@ -861,11 +1035,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Px8-en-eRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-583" y="1487"/>
+            <point key="canvasLocation" x="-888" y="1487"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TFq-sl-MDZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q12-Tc-MRf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Vu-mr-G3z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eVV-AX-Q1V" kind="relationship" relationship="rootViewController" id="kOa-25-iLC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mp0-Hz-Wtv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152.17391304347828" y="1486.6071428571429"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5mu-xm-89z"/>
+        <segue reference="Clf-s7-Iap"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Account" width="170.5" height="170.5"/>
@@ -873,8 +1065,12 @@
         <image name="WelcomeImage" width="1333" height="2000"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="delete.backward.fill" catalog="system" width="128" height="104"/>
+        <image name="qrcode" catalog="system" width="128" height="114"/>
         <namedColor name="AccentColor">
             <color red="0.2199999988079071" green="0.38400000333786011" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AddDocumentBackgroundColor">
+            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PointColor">
             <color red="0.92199999094009399" green="0.92199999094009399" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -67,7 +67,9 @@ class HomeViewController: UIViewController {
         }
         
         accountButton.button.addTarget(self, action: #selector(accountPressed), for: .touchUpInside)
-        navigationItem.rightBarButtonItems = [accountButton.load()]
+        navigationItem.rightBarButtonItems = [accountButton.load(), UIBarButtonItem(title: "Scanner", image: UIImage(systemName: "qrcode.viewfinder"), primaryAction: UIAction(handler: { action in
+            self.performSegue(withIdentifier: "HomeToScanner", sender: self)
+        }), menu: nil)]
         
         ref.child("users").child(user!.uid).child("documents").observe(.value, with: { snapshot in
             self.documents.removeAll()
@@ -80,33 +82,33 @@ class HomeViewController: UIViewController {
                         
                         switch type {
                         case .nationalPassport:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .internationalPassport:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .birthCertificate:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .foreignDocument:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .snils:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .inn:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .oms:
-                            title = name["Surname, name and patronymic".localized()] as? String ?? "Unknown"
+                            title = name["Surname, name and patronymic".localized()] as? String ?? "Unknown".localized()
                         case .driversLicense:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .vehicleRegID:
-                            title = name["Make, model"] as? String ?? "Unknown"
+                            title = name["Make, model"] as? String ?? "Unknown".localized()
                         case .vehiclePassport:
-                            title = name["Make, model"] as? String ?? "Unknown"
+                            title = name["Make, model"] as? String ?? "Unknown".localized()
                         case .osago:
-                            title = name["Make, model"] as? String ?? "Unknown"
+                            title = name["Make, model"] as? String ?? "Unknown".localized()
                         case .casco:
-                            title = name["Make, model"] as? String ?? "Unknown"
+                            title = name["Make, model"] as? String ?? "Unknown".localized()
                         case .militaryID:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         case .vzrInsurance:
-                            title = name["Full name"] as? String ?? "Unknown"
+                            title = name["Full name"] as? String ?? "Unknown".localized()
                         }
                         self.documents.append(Document(id: id, type: type, title: title.localized()))
                     }

@@ -13,10 +13,12 @@ class DocumentViewController: UIViewController {
     var user: User?
     
     var id = ""
+    var path = ""
     
     var fields = [DocumentField]()
     
     @IBOutlet weak var documentFieldsTableView: UITableView!
+    @IBOutlet weak var generateQRCodeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class DocumentViewController: UIViewController {
         documentFieldsTableView.dataSource = self
         documentFieldsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DocumentFieldCell")
         documentFieldsTableView.register(UINib(nibName: "PhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "PhotoTableViewCell")
+        generateQRCodeButton.layer.cornerRadius = 5
     }
     
     @IBAction func deletePressed(_ sender: UIBarButtonItem) {
@@ -76,7 +79,14 @@ class DocumentViewController: UIViewController {
         if segue.identifier == "DocumentToPreview" {
             let previewViewController = segue.destination as! PreviewViewController
             previewViewController.id = id
+        } else if segue.identifier == "DocumentToQRCode" {
+            let qrCodeViewController = segue.destination as! QRCodeViewController
+            qrCodeViewController.path = path
         }
+    }
+    
+    @IBAction func generateQRCodePressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "DocumentToQRCode", sender: self)
     }
 }
 
@@ -108,6 +118,9 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
                             cell.photoImageView.sd_setImage(with: downloadURL) { _, _, _, _ in
                                 cell.indicatorView.stopAnimating()
                                 cell.indicatorView.isHidden = true
+                                self.generateQRCodeButton.isEnabled = true
+                                self.path = "\(self.user!.uid)/scans/\(self.id).png"
+                                self.generateQRCodeButton.backgroundColor = UIColor(named: "AccentColor")
                             }
                         }
                         print(error!)
@@ -118,6 +131,9 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.photoImageView.sd_setImage(with: downloadURL) { _, _, _, _ in
                     cell.indicatorView.stopAnimating()
                     cell.indicatorView.isHidden = true
+                    self.path = "\(self.user!.uid)/documents/\(self.id).png"
+                    self.generateQRCodeButton.isEnabled = true
+                    self.generateQRCodeButton.backgroundColor = UIColor(named: "AccentColor")
                 }
             }
             
