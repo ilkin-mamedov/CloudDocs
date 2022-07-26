@@ -50,29 +50,35 @@ class DocumentViewController: UIViewController {
         generateQRCodeButton.layer.cornerRadius = 5
     }
     
+    @IBAction func sharePressed(_ sender: UIBarButtonItem) {
+        var imageRef: StorageReference!
+        
+        imageRef = self.storageRef.child("\(self.user!.uid)/documents/\(id).png")
+        
+        imageRef.getData(maxSize: 50 * 1024 * 1024) { data, error in
+            if let error = error {
+                imageRef = self.storageRef.child("\(self.user!.uid)/scans/\(self.id).png")
+                
+                imageRef.getData(maxSize: 50 * 1024 * 1024) { data, error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        self.presentShare(imageData: data!)
+                    }
+                }
+                print(error)
+            } else {
+                self.presentShare(imageData: data!)
+            }
+        }
+    }
+    
     @IBAction func deletePressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Do you really want to delete this document?".localized(), message: "", preferredStyle: .alert)
-        
-        alert.view.tintColor = UIColor(named: "AccentColor")
-        
-        let cancel = UIAlertAction(title: "Cancel".localized(), style: .default) { _ in
-            alert.self.dismiss(animated: true)
-        }
-        
-        let delete = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
-            self.ref.child("users").child(self.user!.uid).child("documents").child(self.id).removeValue()
-            self.storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").delete { _ in }
-            self.storageRef!.child("\(self.user!.uid)/scans/\(self.id).png").delete { _ in }
-            SPAlert.present(title: "Deleted Document".localized(), preset: .done)
-            self.navigationController!.popViewController(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(delete)
-        
-        self.present(alert, animated: true, completion: {
-            alert.view.tintColor = UIColor(named: "AccentColor")
-        })
+        self.ref.child("users").child(self.user!.uid).child("documents").child(self.id).removeValue()
+        self.storageRef!.child("\(self.user!.uid)/documents/\(self.id).png").delete { _ in }
+        self.storageRef!.child("\(self.user!.uid)/scans/\(self.id).png").delete { _ in }
+        SPAlert.present(title: "Deleted Document".localized(), preset: .done)
+        self.navigationController!.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +93,24 @@ class DocumentViewController: UIViewController {
     
     @IBAction func generateQRCodePressed(_ sender: UIButton) {
         performSegue(withIdentifier: "DocumentToQRCode", sender: self)
+    }
+    
+    func presentShare(imageData: Data) {
+        if let image = UIImage(data: imageData) {
+            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            activityViewController.excludedActivityTypes = [
+                .airDrop,
+                .assignToContact,
+                .message,
+                .mail,
+                .copyToPasteboard,
+            ]
+            
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -110,6 +134,7 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
                                 if error != nil {
                                     cell.indicatorView.stopAnimating()
                                     cell.indicatorView.isHidden = true
+                                    cell.notAvailableLabel.alpha = 1
                                     print(error!)
                                 }
                                 return
@@ -123,7 +148,8 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
                                 self.generateQRCodeButton.backgroundColor = UIColor(named: "AccentColor")
                             }
                         }
-                        print(error!)
+                    } else {
+                        cell.notAvailableLabel.alpha = 1
                     }
                     return
                 }
@@ -156,7 +182,9 @@ extension DocumentViewController: UITableViewDelegate, UITableViewDataSource {
             UIPasteboard.general.string = fields[indexPath.row].subtitle
             SPAlert.present(title: "Copied to Clipboard".localized(), preset: .done)
         } else {
-            performSegue(withIdentifier: "DocumentToPreview", sender: self)
+            if generateQRCodeButton.isEnabled {
+                performSegue(withIdentifier: "DocumentToPreview", sender: self)
+            }
         }
         documentFieldsTableView.deselectRow(at: indexPath, animated: true)
     }

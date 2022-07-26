@@ -12,10 +12,6 @@ class WelcomeViewController: UIViewController {
         
         navigationController!.navigationBar.barStyle = .black
         
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "WelcomeToPasscode", sender: self)
-        }
-        
         signUpButton.layer.cornerRadius = 5
         signInButton.layer.borderWidth = 1
         signInButton.layer.borderColor = UIColor.white.cgColor

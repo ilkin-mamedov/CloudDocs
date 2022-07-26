@@ -12,7 +12,6 @@
 		3B306D742867367C0052CEE3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B306D732867367C0052CEE3 /* HomeViewController.swift */; };
 		3B306D772867367C0052CEE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B306D752867367C0052CEE3 /* Main.storyboard */; };
 		3B306D792867367F0052CEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B306D782867367F0052CEE3 /* Assets.xcassets */; };
-		3B306D7C2867367F0052CEE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B306D7A2867367F0052CEE3 /* LaunchScreen.storyboard */; };
 		3B306D882867433C0052CEE3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B306D872867433C0052CEE3 /* WelcomeViewController.swift */; };
 		3B306D94286758B20052CEE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B306D9228674A780052CEE3 /* GoogleService-Info.plist */; };
 		3B306D98286766440052CEE3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B306D97286766440052CEE3 /* SignUpViewController.swift */; };
@@ -26,6 +25,9 @@
 		3B628A712868B29800B01318 /* NewDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B628A6F2868B29800B01318 /* NewDocumentTableViewCell.xib */; };
 		3B6B6F28288FDE910093A125 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6B6F27288FDE910093A125 /* PreviewViewController.swift */; };
 		3B6B6F2A288FF5E40093A125 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */; };
+		3B707DBB2890506D004AC593 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B707DBA2890506D004AC593 /* AccountTableViewCell.xib */; };
+		3B707DBC289050B4004AC593 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B707DBE289050B4004AC593 /* PhotoTableViewCell.xib */; };
+		3B707DC22890531E004AC593 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B707DC12890531E004AC593 /* LaunchViewController.swift */; };
 		3B86044D286E247C004DDFC7 /* ScanDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */; };
 		3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */; };
 		3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B902CC12868DD150004900C /* AddDocumentViewController.swift */; };
@@ -41,9 +43,7 @@
 		3BB77C74288FFF0700B5247B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C73288FFF0700B5247B /* ScannerViewController.swift */; };
 		3BB77C76289009B300B5247B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C75289009B300B5247B /* SharedViewController.swift */; };
 		3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */; };
-		3BC8F42B288EB10E00D8DE18 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */; };
 		3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */; };
-		3BDD2974286B4AA4003EC325 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */; };
 		3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */; };
 		3BFC8298286DD42D008DDAF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8297286DD42D008DDAF8 /* String.swift */; };
 		3BFC829B286DD4F5008DDAF8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC829D286DD4F5008DDAF8 /* Localizable.strings */; };
@@ -58,7 +58,6 @@
 		3B306D732867367C0052CEE3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B306D762867367C0052CEE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B306D782867367F0052CEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3B306D7B2867367F0052CEE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B306D872867433C0052CEE3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3B306D9228674A780052CEE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B306D962867622D0052CEE3 /* CloudDocs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudDocs.entitlements; sourceTree = "<group>"; };
@@ -73,6 +72,10 @@
 		3B628A6F2868B29800B01318 /* NewDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		3B6B6F27288FDE910093A125 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		3B707DBA2890506D004AC593 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		3B707DBD289050B4004AC593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		3B707DC0289050BA004AC593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PhotoTableViewCell.strings; sourceTree = "<group>"; };
+		3B707DC12890531E004AC593 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		3B860453286E4B5F004DDFC7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,12 +92,9 @@
 		3BB77C73288FFF0700B5247B /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		3BB77C75289009B300B5247B /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
-		3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
-		3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+RoundedView.swift"; sourceTree = "<group>"; };
 		3BFC8295286DD276008DDAF8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		3BFC8296286DD276008DDAF8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3BFC8297286DD42D008DDAF8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3BFC829C286DD4F5008DDAF8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3BFC82A9286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhotoButtonTableViewCell.xib; sourceTree = "<group>"; };
@@ -179,6 +179,7 @@
 				3B30DF86288DAD56004B055B /* AccountViewController.swift */,
 				3BB77C73288FFF0700B5247B /* ScannerViewController.swift */,
 				3BB77C75289009B300B5247B /* SharedViewController.swift */,
+				3B707DC12890531E004AC593 /* LaunchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,11 +208,11 @@
 				3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */,
 				3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */,
 				3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */,
-				3BDD2972286B4AA4003EC325 /* PhotoTableViewCell.xib */,
+				3B707DBE289050B4004AC593 /* PhotoTableViewCell.xib */,
 				3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */,
 				3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */,
 				3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */,
-				3BC8F429288EB10E00D8DE18 /* AccountTableViewCell.xib */,
+				3B707DBA2890506D004AC593 /* AccountTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -230,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				3B306D752867367C0052CEE3 /* Main.storyboard */,
-				3B306D7A2867367F0052CEE3 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -325,15 +325,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B306D7C2867367F0052CEE3 /* LaunchScreen.storyboard in Resources */,
-				3BC8F42B288EB10E00D8DE18 /* AccountTableViewCell.xib in Resources */,
 				3B628A6A2868987800B01318 /* AddDocumentCollectionViewCell.xib in Resources */,
 				3B306D94286758B20052CEE3 /* GoogleService-Info.plist in Resources */,
 				3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */,
 				3B306D792867367F0052CEE3 /* Assets.xcassets in Resources */,
 				3BFC829B286DD4F5008DDAF8 /* Localizable.strings in Resources */,
 				3BA4D427286935E0002162F1 /* DocumentCollectionViewCell.xib in Resources */,
-				3BDD2974286B4AA4003EC325 /* PhotoTableViewCell.xib in Resources */,
+				3B707DBC289050B4004AC593 /* PhotoTableViewCell.xib in Resources */,
+				3B707DBB2890506D004AC593 /* AccountTableViewCell.xib in Resources */,
 				3B306D772867367C0052CEE3 /* Main.storyboard in Resources */,
 				3BFC82AA286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib in Resources */,
 				3B628A712868B29800B01318 /* NewDocumentTableViewCell.xib in Resources */,
@@ -389,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B707DC22890531E004AC593 /* LaunchViewController.swift in Sources */,
 				3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */,
 				3B306D742867367C0052CEE3 /* HomeViewController.swift in Sources */,
 				3B30DF87288DAD56004B055B /* AccountViewController.swift in Sources */,
@@ -433,13 +433,13 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		3B306D7A2867367F0052CEE3 /* LaunchScreen.storyboard */ = {
+		3B707DBE289050B4004AC593 /* PhotoTableViewCell.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3B306D7B2867367F0052CEE3 /* Base */,
-				3BFC8296286DD276008DDAF8 /* ru */,
+				3B707DBD289050B4004AC593 /* Base */,
+				3B707DC0289050BA004AC593 /* ru */,
 			);
-			name = LaunchScreen.storyboard;
+			name = PhotoTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		3BFC829D286DD4F5008DDAF8 /* Localizable.strings */ = {
@@ -581,9 +581,10 @@
 				DEVELOPMENT_TEAM = T439V6N83P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CloudDocs/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please, allow to continue scan.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = " Please, allow to continue with Face ID.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -616,9 +617,10 @@
 				DEVELOPMENT_TEAM = T439V6N83P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CloudDocs/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please, allow to continue scan.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = " Please, allow to continue with Face ID.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

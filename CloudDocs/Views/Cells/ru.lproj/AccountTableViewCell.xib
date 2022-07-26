@@ -65,7 +65,7 @@
                 <outlet property="emailLabel" destination="sga-8b-v9X" id="xEz-XU-ApO"/>
                 <outlet property="nameLabel" destination="Lgi-Hj-HAv" id="ziz-L9-oai"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+            <point key="canvasLocation" x="249" y="104"/>
         </tableViewCell>
     </objects>
     <resources>

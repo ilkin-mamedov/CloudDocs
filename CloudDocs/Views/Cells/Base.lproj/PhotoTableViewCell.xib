@@ -24,12 +24,20 @@
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CAu-1X-ywO">
                         <rect key="frame" x="150" y="90" width="20" height="20"/>
                     </activityIndicatorView>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfg-tt-mlT">
+                        <rect key="frame" x="99.5" y="88" width="121.5" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tx8-Yb-AgX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="A56-4v-nSh"/>
                     <constraint firstItem="CAu-1X-ywO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D1v-pa-3KC"/>
+                    <constraint firstItem="gfg-tt-mlT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ES0-gZ-0JC"/>
                     <constraint firstItem="CAu-1X-ywO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="EVd-uV-Iev"/>
                     <constraint firstAttribute="trailing" secondItem="tx8-Yb-AgX" secondAttribute="trailing" constant="16" id="aAj-aR-HzG"/>
+                    <constraint firstItem="gfg-tt-mlT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kIn-lp-5R4"/>
                     <constraint firstAttribute="bottom" secondItem="tx8-Yb-AgX" secondAttribute="bottom" constant="8" id="q4U-am-oXa"/>
                     <constraint firstItem="tx8-Yb-AgX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="sGl-bo-3GY"/>
                 </constraints>
@@ -37,9 +45,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="indicatorView" destination="CAu-1X-ywO" id="qZD-sw-TXU"/>
+                <outlet property="notAvailableLabel" destination="gfg-tt-mlT" id="9C7-1c-7Sw"/>
                 <outlet property="photoImageView" destination="tx8-Yb-AgX" id="IMc-ct-6su"/>
             </connections>
-            <point key="canvasLocation" x="139" y="96"/>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
