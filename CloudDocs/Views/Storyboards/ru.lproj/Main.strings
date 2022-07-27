@@ -145,3 +145,6 @@
 
 /* Class = "UILabel"; text = "Scan the QR code of another person who has the CloudDocs app."; ObjectID = "QDd-2p-KxO"; */
 "QDd-2p-KxO.text" = "Отсканируйте QR код другого человека, у которого есть приложение CloudDocs.";
+
+/* Class = "UILabel"; text = "or"; ObjectID = "dDo-xP-tGG"; */
+"dDo-xP-tGG.text" = "или";

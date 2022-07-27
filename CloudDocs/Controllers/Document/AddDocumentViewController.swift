@@ -84,7 +84,7 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
         } else if indexPath.section == 1 {
             let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "ScanDocumentTableViewCell", for: indexPath) as! ScanDocumentTableViewCell
             
-            cell.scanDocumentButton.addTarget(self, action: #selector(scanDocument), for: .touchUpInside)
+            cell.scanDocumentButton.addTarget(self, action: #selector(addScan), for: .touchUpInside)
             
             return cell
         } else {
@@ -143,18 +143,21 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
             imagePicker.allowsEditing = false
             
             present(imagePicker, animated: true) {
-                sender.setTitle("Photo uploaded".localized(), for: .normal)
+                sender.setTitle("Uploaded".localized(), for: .normal)
                 sender.isEnabled = false
                 sender.backgroundColor = UIColor(named: "AddDocumentBackgroundColor")
             }
         }
     }
     
-    @objc func scanDocument() {
+    @objc func addScan(sender: UIButton) {
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
         present(documentCameraViewController, animated: true) {
             self.ref.child("users").child(self.user!.uid).child("documents").child(self.documentID).child("type").setValue(Document.typeToString(type: self.type!))
+            sender.setTitle("Uploaded".localized(), for: .normal)
+            sender.isEnabled = false
+            sender.backgroundColor = UIColor(named: "AddDocumentBackgroundColor")
         }
     }
 }

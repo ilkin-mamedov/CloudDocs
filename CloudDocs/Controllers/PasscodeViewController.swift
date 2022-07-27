@@ -25,6 +25,7 @@ class PasscodeViewController: UIViewController {
     @IBOutlet weak var biometricsButton: UIButton!
     
     private var passcode = ""
+    private var attempts = 0
     
     let context = LAContext()
     
@@ -78,9 +79,20 @@ class PasscodeViewController: UIViewController {
                         performSegue(withIdentifier: "PasscodeToHome", sender: self)
                     } else {
                         passcode = ""
+                        attempts += 1
                         titleLabel.text = "Invalid passcode".localized()
                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                         disableButtons(false)
+                        
+                        if attempts == 5 {
+                            do {
+                                try Auth.auth().signOut()
+                                self.performSegue(withIdentifier: "PasscodeToWelcome", sender: self)
+                                UserDefaults.standard.removeObject(forKey: "passcode")
+                            } catch {
+                                print(error)
+                            }
+                        }
                     }
                 } else {
                     UserDefaults.standard.set(passcode, forKey: "passcode")

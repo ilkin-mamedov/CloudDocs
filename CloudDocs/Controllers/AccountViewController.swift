@@ -34,7 +34,7 @@ class AccountViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    @IBAction func signOutPressed(_ sender: UIBarButtonItem) {
+    @objc func signOutPressed() {
         let alert = UIAlertController(title: .none, message: .none, preferredStyle: .actionSheet)
         
         alert.view.tintColor = UIColor(named: "AccentColor")
@@ -77,15 +77,24 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accountImageView.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "Account"))
             cell.nameLabel.text = user?.displayName
             cell.emailLabel.text = user?.email
+            cell.signOutButton.addTarget(self, action: #selector(signOutPressed), for: .touchUpInside)
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
             
             cell.textLabel?.text = actions[indexPath.row]
             
-            if indexPath.row == (actions.count - 1) {
+            if indexPath.row == 2 {
+                cell.detailTextLabel?.textColor = .systemGray
+                cell.detailTextLabel?.text = "Re-authentication required".localized()
+            } else if indexPath.row == 3 {
+                cell.detailTextLabel?.textColor = .systemGray
+                cell.detailTextLabel?.text = "Re-authentication required".localized()
+            } else if indexPath.row == 4 {
                 cell.textLabel?.textColor = .systemRed
+                cell.detailTextLabel?.textColor = .systemGray
+                cell.detailTextLabel?.text = "Re-authentication required".localized()
             }
             
             return cell

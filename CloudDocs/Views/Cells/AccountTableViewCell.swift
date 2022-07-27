@@ -5,6 +5,7 @@ class AccountTableViewCell: UITableViewCell {
     @IBOutlet weak var accountImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var signOutButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

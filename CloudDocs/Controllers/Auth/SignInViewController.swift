@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseAuth
+import SnackBar_swift
 import SPAlert
 
 class SignInViewController: UIViewController {
@@ -28,6 +29,9 @@ class SignInViewController: UIViewController {
             string: "Password".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
@@ -51,6 +55,8 @@ class SignInViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
                 if error == nil {
                     self!.performSegue(withIdentifier: "SignInToPasscode", sender: self)
+                } else {
+                    AppSnackBar.make(in: self!.view, message: error!.localizedDescription.localized(), duration: .lengthLong).show()
                 }
             }
         }
@@ -82,5 +88,20 @@ extension SignInViewController: UITextFieldDelegate {
         } else {
             forgottenPasswordButton.isEnabled = true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+class AppSnackBar: SnackBar {
+    
+    override var style: SnackBarStyle {
+        var style = SnackBarStyle()
+        style.background = UIColor(named: "AccentColor")!
+        style.textColor = .white
+        return style
     }
 }

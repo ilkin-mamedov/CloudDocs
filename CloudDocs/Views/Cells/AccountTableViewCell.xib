@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,20 +42,28 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otq-Wj-c7K">
-                        <rect key="frame" x="0.0" y="99" width="320" height="1"/>
+                        <rect key="frame" x="16" y="99" width="288" height="1"/>
                         <color key="backgroundColor" name="AddDocumentBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="tSo-xe-1o2"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2S-ef-gAQ">
+                        <rect key="frame" x="270.5" y="34.5" width="49.5" height="31"/>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="eoc-xx-c69" firstAttribute="leading" secondItem="Y08-lr-q9a" secondAttribute="trailing" constant="8" id="265-eh-sfs"/>
-                    <constraint firstItem="otq-Wj-c7K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4tW-Ro-Hxb"/>
                     <constraint firstItem="Y08-lr-q9a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="HYm-R8-xN8"/>
+                    <constraint firstItem="otq-Wj-c7K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JM9-pv-KHC"/>
                     <constraint firstItem="eoc-xx-c69" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="La0-SK-154"/>
                     <constraint firstItem="Y08-lr-q9a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NhG-R2-VcF"/>
-                    <constraint firstAttribute="trailing" secondItem="otq-Wj-c7K" secondAttribute="trailing" id="lea-vA-9bW"/>
+                    <constraint firstItem="n2S-ef-gAQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Nxv-TY-m9s"/>
+                    <constraint firstAttribute="trailing" secondItem="otq-Wj-c7K" secondAttribute="trailing" constant="16" id="lea-vA-9bW"/>
+                    <constraint firstAttribute="trailing" secondItem="n2S-ef-gAQ" secondAttribute="trailing" id="nvN-Pz-Shj"/>
                     <constraint firstAttribute="bottom" secondItem="Y08-lr-q9a" secondAttribute="bottom" constant="8" id="oH3-kV-jFH"/>
                     <constraint firstAttribute="bottom" secondItem="otq-Wj-c7K" secondAttribute="bottom" id="scu-Kk-tCQ"/>
                 </constraints>
@@ -64,14 +73,19 @@
                 <outlet property="accountImageView" destination="Y08-lr-q9a" id="eOM-Ot-p3h"/>
                 <outlet property="emailLabel" destination="sga-8b-v9X" id="xEz-XU-ApO"/>
                 <outlet property="nameLabel" destination="Lgi-Hj-HAv" id="ziz-L9-oai"/>
+                <outlet property="signOutButton" destination="n2S-ef-gAQ" id="MCp-f4-G4X"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="Account" width="170.5" height="170.5"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <namedColor name="AddDocumentBackgroundColor">
             <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

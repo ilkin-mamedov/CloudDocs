@@ -6,6 +6,7 @@ target 'CloudDocs' do
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'SDWebImage'
+  pod 'SnackBar.swift'
   pod 'SPAlert'
   
 end

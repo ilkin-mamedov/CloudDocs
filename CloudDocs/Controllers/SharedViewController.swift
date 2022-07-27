@@ -28,7 +28,7 @@ class SharedViewController: UIViewController {
                 self.dismiss(animated: true)
         }
         
-        title = "\(timeRemaining)s"
+        title = "\(timeRemaining)"
         
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
@@ -68,7 +68,7 @@ class SharedViewController: UIViewController {
         } else {
             timeRemaining -= 1
             UIView.animate(withDuration: 1) {
-                self.title = "\(self.timeRemaining)s"
+                self.title = "\(self.timeRemaining)"
                 self.progressBarView.setProgress(Float(self.timeRemaining) / Float(30), animated: true)
             }
         }

@@ -37,7 +37,7 @@
 "Military ID" = "Военный билет";
 "VZR Insurance" = "Страховка ВЗР";
 "Added Document" = "Документ добавлен";
-"Photo uploaded" = "Фото загружено";
+"Uploaded" = "Загружено";
 "Add photo of document" = "Добавить фото документа";
 "Do you really want to delete this document?" = "Вы действительно хотите удалить этот документ?";
 "Copied to Clipboard" = "Скопировано";
@@ -114,3 +114,7 @@
 "Please, check your e-mail" = "Пожалуйста, проверьте Вашу эл. почту";
 "Optional" = "Опционально";
 "Unknown" = "Неизвестно";
+"The email address is badly formatted." = "Эл. почта имеет неправильный формат.";
+"There is no user record corresponding to this identifier. The user may have been deleted." = "Нет записи пользователя, соответствующей этой эл. почте. Возможно, пользователь был удален.";
+"The password is invalid or the user does not have a password." = "Пароль недействителен или у пользователя нет пароля.";
+"Re-authentication required" = "Требуется повторная аутентификация";
