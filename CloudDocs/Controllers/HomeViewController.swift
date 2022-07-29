@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     var filteredDocuments = [Document]()
     
     var documentID = ""
+    var isPremium = false
     
     @IBOutlet weak var documentsCollectionView: UICollectionView!
     
@@ -67,8 +68,26 @@ class HomeViewController: UIViewController {
         }
         
         accountButton.button.addTarget(self, action: #selector(accountPressed), for: .touchUpInside)
+        
+        ref.child("users").child(user!.uid).child("isPremium").observe(.value, with: { snapshot in
+            self.isPremium = snapshot.value as! Bool
+            if !self.isPremium {
+                self.navigationItem.leftBarButtonItems = [UIBarButtonItem(title: "Try Premium".localized(), image: nil, primaryAction: UIAction(handler: { action in
+                    if !self.isPremium {
+                        self.performSegue(withIdentifier: "HomeToPremium", sender: self)
+                    } else {
+                        self.navigationItem.leftBarButtonItems = []
+                    }
+                }), menu: nil)]
+            }
+        })
+        
         navigationItem.rightBarButtonItems = [accountButton.load(), UIBarButtonItem(title: "Scanner", image: UIImage(systemName: "qrcode.viewfinder"), primaryAction: UIAction(handler: { action in
-            self.performSegue(withIdentifier: "HomeToScanner", sender: self)
+            if self.isPremium {
+                self.performSegue(withIdentifier: "HomeToScanner", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "HomeToPremium", sender: self)
+            }
         }), menu: nil)]
         
         ref.child("users").child(user!.uid).child("documents").observe(.value, with: { snapshot in
@@ -215,7 +234,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             performSegue(withIdentifier: "HomeToDocument", sender: self)
         } else {
             if indexPath.row == 0 {
-                performSegue(withIdentifier: "HomeToNewDocument", sender: self)
+                if isPremium {
+                    performSegue(withIdentifier: "HomeToNewDocument", sender: self)
+                } else {
+                    if documents.count < 3 {
+                        performSegue(withIdentifier: "HomeToNewDocument", sender: self)
+                    } else {
+                        performSegue(withIdentifier: "HomeToPremium", sender: self)
+                    }
+                }
             } else {
                 documentID = documents[indexPath.row - 1].id
                 performSegue(withIdentifier: "HomeToDocument", sender: self)

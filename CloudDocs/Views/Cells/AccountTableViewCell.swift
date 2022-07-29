@@ -3,6 +3,7 @@ import UIKit
 class AccountTableViewCell: UITableViewCell {
 
     @IBOutlet weak var accountImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var signOutButton: UIButton!

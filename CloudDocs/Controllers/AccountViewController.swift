@@ -18,6 +18,7 @@ class AccountViewController: UIViewController {
     
     var email = ""
     var password = ""
+    var isPremium = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,11 @@ class AccountViewController: UIViewController {
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
+        
+        ref.child("users").child(user!.uid).child("isPremium").observe(.value, with: { snapshot in
+            self.isPremium = snapshot.value as! Bool
+            self.tableView.reloadData()
+        })
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -75,6 +81,11 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountTableViewCell", for: indexPath) as! AccountTableViewCell
             
             cell.accountImageView.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "Account"))
+            if isPremium {
+                cell.statusLabel.text = "PREMIUM".localized()
+            } else {
+                cell.statusLabel.text = "FREE".localized()
+            }
             cell.nameLabel.text = user?.displayName
             cell.emailLabel.text = user?.email
             cell.signOutButton.addTarget(self, action: #selector(signOutPressed), for: .touchUpInside)
@@ -225,7 +236,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
                 deleteAlert.view.tintColor = UIColor(named: "AccentColor")
                 
                 let deleteAccount = UIAlertAction(title: "Delete account".localized(), style: .destructive) { action in
-                    self.ref.child("users").child(self.user!.uid).observeSingleEvent(of: .value) { snapshot in
+                    self.ref.child("users").child(self.user!.uid).child("documents").observeSingleEvent(of: .value) { snapshot in
                         if snapshot.exists() {
                             SPAlert.present(title: "Please, delete all your documents".localized(), preset: .error)
                         } else {
@@ -240,6 +251,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
                                             SPAlert.present(title: "Error".localized(), preset: .error)
                                         } else {
                                             self.storageRef.child(self.user!.uid).child("account.png").delete { _ in }
+                                            self.ref.child("users").child(self.user!.uid).child("isPremium").removeValue()
                                             do {
                                                 try Auth.auth().signOut()
                                                 self.performSegue(withIdentifier: "AccountToWelcome", sender: self)

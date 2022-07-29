@@ -14,6 +14,7 @@ class DocumentViewController: UIViewController {
     
     var id = ""
     var path = ""
+    var isPremium = false
     
     var fields = [DocumentField]()
     
@@ -26,6 +27,10 @@ class DocumentViewController: UIViewController {
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
+        
+        ref.child("users").child(user!.uid).child("isPremium").observe(.value, with: { snapshot in
+            self.isPremium = snapshot.value as! Bool
+        })
         
         ref.child("users").child(user!.uid).child("documents").child(id).observeSingleEvent(of: .value) { snapshot in
             if let dict = snapshot.value as? [String : AnyObject] {
@@ -92,7 +97,11 @@ class DocumentViewController: UIViewController {
     }
     
     @IBAction func generateQRCodePressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "DocumentToQRCode", sender: self)
+        if isPremium {
+            performSegue(withIdentifier: "DocumentToQRCode", sender: self)
+        } else {
+            performSegue(withIdentifier: "DocumentToPremium", sender: self)
+        }
     }
     
     func presentShare(imageData: Data) {

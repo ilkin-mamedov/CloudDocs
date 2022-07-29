@@ -148,3 +148,12 @@
 
 /* Class = "UILabel"; text = "or"; ObjectID = "dDo-xP-tGG"; */
 "dDo-xP-tGG.text" = "или";
+
+/* Class = "UILabel"; text = "Enjoy unlimited documents, CloudDocs Sharing, saving photos and scans of documents."; ObjectID = "qGW-kt-YML"; */
+"qGW-kt-YML.text" = "Наслаждайтесь неограниченным количеством документов, доступом к CloudDocs Sharing, сохранением фото и сканов документов.";
+
+/* Class = "UILabel"; text = "1 month free, then 99,00 RUB/month"; ObjectID = "G3q-Px-WTq"; */
+"G3q-Px-WTq.text" = "1 месяц бесплатно, затем 99,00 RUB/месяц";
+
+/* Class = "UIButton"; configuration.title = "Subscribe"; ObjectID = "rF7-SF-0U2"; */
+"rF7-SF-0U2.configuration.title" = "Подписаться";

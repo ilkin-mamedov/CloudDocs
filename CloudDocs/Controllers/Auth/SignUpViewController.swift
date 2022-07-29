@@ -1,5 +1,8 @@
 import UIKit
+import FirebaseCore
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
 
@@ -70,6 +73,7 @@ class SignUpViewController: UIViewController {
         
         if !isEmptyFields() && isPasswordValid() {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("isPremium").setValue(false)
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest!.displayName = self.nameTextField.text!
                 changeRequest!.commitChanges()

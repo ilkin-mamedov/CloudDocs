@@ -28,11 +28,9 @@
 		3B707DBB2890506D004AC593 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B707DBA2890506D004AC593 /* AccountTableViewCell.xib */; };
 		3B707DBC289050B4004AC593 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B707DBE289050B4004AC593 /* PhotoTableViewCell.xib */; };
 		3B707DC22890531E004AC593 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B707DC12890531E004AC593 /* LaunchViewController.swift */; };
-		3B86044D286E247C004DDFC7 /* ScanDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */; };
-		3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */; };
 		3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B902CC12868DD150004900C /* AddDocumentViewController.swift */; };
 		3BA4D41F28692AD8002162F1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D41E28692AD8002162F1 /* Document.swift */; };
-		3BA4D42228693038002162F1 /* AddPhotoButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42028693038002162F1 /* AddPhotoButtonTableViewCell.swift */; };
+		3BA4D42228693038002162F1 /* AddButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42028693038002162F1 /* AddButtonTableViewCell.swift */; };
 		3BA4D426286935E0002162F1 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */; };
 		3BA4D427286935E0002162F1 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */; };
 		3BA4D42A2869E301002162F1 /* DocumentField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4292869E301002162F1 /* DocumentField.swift */; };
@@ -40,14 +38,17 @@
 		3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42D2869E343002162F1 /* NewDocument.swift */; };
 		3BA4D4302869E36A002162F1 /* DocumentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */; };
 		3BA4D4342869FF84002162F1 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4D4332869FF84002162F1 /* DocumentViewController.swift */; };
+		3BB2EF322894994D00B1BC43 /* FeatureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2EF302894994D00B1BC43 /* FeatureTableViewCell.swift */; };
+		3BB2EF332894994D00B1BC43 /* FeatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2EF312894994D00B1BC43 /* FeatureTableViewCell.xib */; };
 		3BB77C74288FFF0700B5247B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C73288FFF0700B5247B /* ScannerViewController.swift */; };
 		3BB77C76289009B300B5247B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB77C75289009B300B5247B /* SharedViewController.swift */; };
 		3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */; };
+		3BCA451F28948A4600BC7567 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA451E28948A4600BC7567 /* PremiumViewController.swift */; };
 		3BDD2973286B4AA4003EC325 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */; };
 		3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */; };
 		3BFC8298286DD42D008DDAF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8297286DD42D008DDAF8 /* String.swift */; };
 		3BFC829B286DD4F5008DDAF8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC829D286DD4F5008DDAF8 /* Localizable.strings */; };
-		3BFC82AA286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC82A9286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib */; };
+		3BFC82AA286DDF85008DDAF8 /* AddButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC82A9286DDF85008DDAF8 /* AddButtonTableViewCell.xib */; };
 		86405352A3C2A733C3284E42 /* Pods_CloudDocs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C35C093A442652C793C2F74 /* Pods_CloudDocs.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +77,10 @@
 		3B707DBD289050B4004AC593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		3B707DC0289050BA004AC593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PhotoTableViewCell.strings; sourceTree = "<group>"; };
 		3B707DC12890531E004AC593 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentTableViewCell.swift; sourceTree = "<group>"; };
-		3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		3B860453286E4B5F004DDFC7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B902CC12868DD150004900C /* AddDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentViewController.swift; sourceTree = "<group>"; };
 		3BA4D41E28692AD8002162F1 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		3BA4D42028693038002162F1 /* AddPhotoButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoButtonTableViewCell.swift; sourceTree = "<group>"; };
+		3BA4D42028693038002162F1 /* AddButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonTableViewCell.swift; sourceTree = "<group>"; };
 		3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentCollectionViewCell.xib; sourceTree = "<group>"; };
 		3BA4D4292869E301002162F1 /* DocumentField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentField.swift; sourceTree = "<group>"; };
@@ -89,15 +88,18 @@
 		3BA4D42D2869E343002162F1 /* NewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocument.swift; sourceTree = "<group>"; };
 		3BA4D42F2869E36A002162F1 /* DocumentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataSource.swift; sourceTree = "<group>"; };
 		3BA4D4332869FF84002162F1 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		3BB2EF302894994D00B1BC43 /* FeatureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTableViewCell.swift; sourceTree = "<group>"; };
+		3BB2EF312894994D00B1BC43 /* FeatureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeatureTableViewCell.xib; sourceTree = "<group>"; };
 		3BB77C73288FFF0700B5247B /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		3BB77C75289009B300B5247B /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		3BCA451E28948A4600BC7567 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		3BDD2984286B583F003EC325 /* UIBarButtonItem+RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+RoundedView.swift"; sourceTree = "<group>"; };
 		3BFC8295286DD276008DDAF8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		3BFC8297286DD42D008DDAF8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3BFC829C286DD4F5008DDAF8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3BFC82A9286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhotoButtonTableViewCell.xib; sourceTree = "<group>"; };
+		3BFC82A9286DDF85008DDAF8 /* AddButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonTableViewCell.xib; sourceTree = "<group>"; };
 		60CEE72B43EBB935D336538A /* Pods-CloudDocs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudDocs.release.xcconfig"; path = "Target Support Files/Pods-CloudDocs/Pods-CloudDocs.release.xcconfig"; sourceTree = "<group>"; };
 		9C35C093A442652C793C2F74 /* Pods_CloudDocs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudDocs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA7073F2B3C4B396767DA55 /* Pods-CloudDocs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudDocs.debug.xcconfig"; path = "Target Support Files/Pods-CloudDocs/Pods-CloudDocs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,14 +174,14 @@
 		3B306D8528673F5F0052CEE3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BCA451D2894714A00BC7567 /* Launch */,
 				3BA4D4282869E294002162F1 /* Document */,
 				3B628A6B2868B10800B01318 /* Auth */,
-				3B628A642868770700B01318 /* PasscodeViewController.swift */,
 				3B306D732867367C0052CEE3 /* HomeViewController.swift */,
 				3B30DF86288DAD56004B055B /* AccountViewController.swift */,
 				3BB77C73288FFF0700B5247B /* ScannerViewController.swift */,
 				3BB77C75289009B300B5247B /* SharedViewController.swift */,
-				3B707DC12890531E004AC593 /* LaunchViewController.swift */,
+				3BCA451E28948A4600BC7567 /* PremiumViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,16 +205,16 @@
 				3B628A682868987800B01318 /* AddDocumentCollectionViewCell.xib */,
 				3B628A6E2868B29800B01318 /* NewDocumentTableViewCell.swift */,
 				3B628A6F2868B29800B01318 /* NewDocumentTableViewCell.xib */,
-				3BA4D42028693038002162F1 /* AddPhotoButtonTableViewCell.swift */,
-				3BFC82A9286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib */,
+				3BA4D42028693038002162F1 /* AddButtonTableViewCell.swift */,
+				3BFC82A9286DDF85008DDAF8 /* AddButtonTableViewCell.xib */,
 				3BA4D424286935E0002162F1 /* DocumentCollectionViewCell.swift */,
 				3BA4D425286935E0002162F1 /* DocumentCollectionViewCell.xib */,
 				3BDD2971286B4AA4003EC325 /* PhotoTableViewCell.swift */,
 				3B707DBE289050B4004AC593 /* PhotoTableViewCell.xib */,
-				3B86044B286E247C004DDFC7 /* ScanDocumentTableViewCell.swift */,
-				3B86044C286E247C004DDFC7 /* ScanDocumentTableViewCell.xib */,
 				3BC8F428288EB10E00D8DE18 /* AccountTableViewCell.swift */,
 				3B707DBA2890506D004AC593 /* AccountTableViewCell.xib */,
+				3BB2EF302894994D00B1BC43 /* FeatureTableViewCell.swift */,
+				3BB2EF312894994D00B1BC43 /* FeatureTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -245,6 +247,15 @@
 				3B6B6F29288FF5E40093A125 /* QRCodeViewController.swift */,
 			);
 			path = Document;
+			sourceTree = "<group>";
+		};
+		3BCA451D2894714A00BC7567 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3B707DC12890531E004AC593 /* LaunchViewController.swift */,
+				3B628A642868770700B01318 /* PasscodeViewController.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		3BDD2983286B5818003EC325 /* Extensions */ = {
@@ -325,16 +336,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB2EF332894994D00B1BC43 /* FeatureTableViewCell.xib in Resources */,
 				3B628A6A2868987800B01318 /* AddDocumentCollectionViewCell.xib in Resources */,
 				3B306D94286758B20052CEE3 /* GoogleService-Info.plist in Resources */,
-				3B86044E286E247C004DDFC7 /* ScanDocumentTableViewCell.xib in Resources */,
 				3B306D792867367F0052CEE3 /* Assets.xcassets in Resources */,
 				3BFC829B286DD4F5008DDAF8 /* Localizable.strings in Resources */,
 				3BA4D427286935E0002162F1 /* DocumentCollectionViewCell.xib in Resources */,
 				3B707DBC289050B4004AC593 /* PhotoTableViewCell.xib in Resources */,
 				3B707DBB2890506D004AC593 /* AccountTableViewCell.xib in Resources */,
 				3B306D772867367C0052CEE3 /* Main.storyboard in Resources */,
-				3BFC82AA286DDF85008DDAF8 /* AddPhotoButtonTableViewCell.xib in Resources */,
+				3BFC82AA286DDF85008DDAF8 /* AddButtonTableViewCell.xib in Resources */,
 				3B628A712868B29800B01318 /* NewDocumentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,11 +405,11 @@
 				3B30DF87288DAD56004B055B /* AccountViewController.swift in Sources */,
 				3BC8F42A288EB10E00D8DE18 /* AccountTableViewCell.swift in Sources */,
 				3BDD2985286B583F003EC325 /* UIBarButtonItem+RoundedView.swift in Sources */,
+				3BCA451F28948A4600BC7567 /* PremiumViewController.swift in Sources */,
 				3B306D882867433C0052CEE3 /* WelcomeViewController.swift in Sources */,
 				3B306D9A28676B840052CEE3 /* SignInViewController.swift in Sources */,
 				3BB77C76289009B300B5247B /* SharedViewController.swift in Sources */,
 				3BB77C74288FFF0700B5247B /* ScannerViewController.swift in Sources */,
-				3B86044D286E247C004DDFC7 /* ScanDocumentTableViewCell.swift in Sources */,
 				3B306D702867367C0052CEE3 /* AppDelegate.swift in Sources */,
 				3B628A652868770700B01318 /* PasscodeViewController.swift in Sources */,
 				3BA4D42A2869E301002162F1 /* DocumentField.swift in Sources */,
@@ -406,7 +417,7 @@
 				3B628A702868B29800B01318 /* NewDocumentTableViewCell.swift in Sources */,
 				3BA4D42E2869E343002162F1 /* NewDocument.swift in Sources */,
 				3B628A692868987800B01318 /* AddDocumentCollectionViewCell.swift in Sources */,
-				3BA4D42228693038002162F1 /* AddPhotoButtonTableViewCell.swift in Sources */,
+				3BA4D42228693038002162F1 /* AddButtonTableViewCell.swift in Sources */,
 				3BFC8298286DD42D008DDAF8 /* String.swift in Sources */,
 				3BA4D426286935E0002162F1 /* DocumentCollectionViewCell.swift in Sources */,
 				3B306D722867367C0052CEE3 /* SceneDelegate.swift in Sources */,
@@ -414,6 +425,7 @@
 				3B306D98286766440052CEE3 /* SignUpViewController.swift in Sources */,
 				3B902CC22868DD150004900C /* AddDocumentViewController.swift in Sources */,
 				3B628A6D2868B19B00B01318 /* NewDocumentViewController.swift in Sources */,
+				3BB2EF322894994D00B1BC43 /* FeatureTableViewCell.swift in Sources */,
 				3BA4D42C2869E31D002162F1 /* DocumentType.swift in Sources */,
 				3B6B6F2A288FF5E40093A125 /* QRCodeViewController.swift in Sources */,
 				3BA4D41F28692AD8002162F1 /* Document.swift in Sources */,

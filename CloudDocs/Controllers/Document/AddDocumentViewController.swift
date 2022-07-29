@@ -36,8 +36,7 @@ class AddDocumentViewController: UIViewController {
         
         documentFieldsTableView.delegate = self
         documentFieldsTableView.dataSource = self
-        documentFieldsTableView.register(UINib(nibName: "AddPhotoButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddPhotoButtonTableViewCell")
-        documentFieldsTableView.register(UINib(nibName: "ScanDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "ScanDocumentTableViewCell")
+        documentFieldsTableView.register(UINib(nibName: "AddButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddButtonTableViewCell")
         documentFieldsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DocumentFieldCell")
     }
     
@@ -76,15 +75,17 @@ extension AddDocumentViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "AddPhotoButtonTableViewCell", for: indexPath) as! AddPhotoButtonTableViewCell
+            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "AddButtonTableViewCell", for: indexPath) as! AddButtonTableViewCell
             
-            cell.addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
+            cell.addButton.setTitle("Add photo of document".localized(), for: .normal)
+            cell.addButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
             
             return cell
         } else if indexPath.section == 1 {
-            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "ScanDocumentTableViewCell", for: indexPath) as! ScanDocumentTableViewCell
+            let cell = documentFieldsTableView.dequeueReusableCell(withIdentifier: "AddButtonTableViewCell", for: indexPath) as! AddButtonTableViewCell
             
-            cell.scanDocumentButton.addTarget(self, action: #selector(addScan), for: .touchUpInside)
+            cell.addButton.setTitle("Add scan of document".localized(), for: .normal)
+            cell.addButton.addTarget(self, action: #selector(addScan), for: .touchUpInside)
             
             return cell
         } else {

@@ -1,14 +1,13 @@
 import UIKit
 
-class AddPhotoButtonTableViewCell: UITableViewCell {
+class AddButtonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        addPhotoButton.setTitle("Add photo of document".localized(), for: .normal)
-        addPhotoButton.layer.cornerRadius = 5
+        addButton.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
