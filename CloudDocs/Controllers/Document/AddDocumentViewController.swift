@@ -17,6 +17,7 @@ class AddDocumentViewController: UIViewController {
     var fields: [DocumentField]?
     var isAdded = false
     var imagePicker = UIImagePickerController()
+    var documentsCount = 0
     
     @IBOutlet weak var documentFieldsTableView: UITableView!
     
@@ -26,6 +27,10 @@ class AddDocumentViewController: UIViewController {
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         user = Auth.auth().currentUser
+        
+        ref.child("users").child(self.user!.uid).child("documents").observe(.value) { snapshot in
+            self.documentsCount = (snapshot.value as? [String : AnyObject])?.count ?? 0
+        }
         
         documentDataSource.type = type!
         fields = documentDataSource.fields
@@ -45,6 +50,9 @@ class AddDocumentViewController: UIViewController {
         SPAlert.present(title: "Added Document".localized(), preset: .done)
         isAdded = true
         dismiss(animated: true)
+        if documentsCount == 1 {
+            self.sendNotification()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -54,6 +62,17 @@ class AddDocumentViewController: UIViewController {
             storageRef!.child("\(user!.uid)/scans/\(documentID).png").delete { _ in }
         }
         NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
+    }
+    
+    func sendNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "CloudDocs"
+        content.body = "Congratulations! Your first document has been added. In the free version, you can add 2 more documents. To use all the features of CloudDocs, you can try premium.".localized()
+        content.sound = .default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false))
+        
+        UNUserNotificationCenter.current().add(request)
     }
 }
 

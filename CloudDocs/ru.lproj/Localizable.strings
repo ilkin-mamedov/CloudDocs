@@ -118,7 +118,7 @@
 "There is no user record corresponding to this identifier. The user may have been deleted." = "Нет записи пользователя, соответствующей этой эл. почте. Возможно, пользователь был удален.";
 "The password is invalid or the user does not have a password." = "Пароль недействителен или у пользователя нет пароля.";
 "Re-authentication required" = "Требуется повторная аутентификация";
-"Try Premium" = "Попробуйте премиум";
+"Try Premium" = "Попробовать премиум";
 "PREMIUM" = "ПРЕМИУМ";
 "FREE" = "БЕСПЛАТНЫЙ";
 "Unlimited documents" = "Добавляйте неограниченное количество документов";
@@ -127,3 +127,4 @@
 "Saving scan of document" = "Сохраняйте скан документа";
 "Coming Soon" = "Скоро";
 "This feature is currently not available." = "В настоящее время эта функция недоступна.";
+"Congratulations! Your first document has been added. In the free version, you can add 2 more documents. To use all the features of CloudDocs, you can try premium." = "Поздравляем! Ваш первый документ добавлен. В бесплатной версии можно добавить еще 2 документа. Чтобы использовать все функции CloudDocs, Вы можете попробовать премиум версию.";

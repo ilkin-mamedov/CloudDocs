@@ -1286,20 +1286,30 @@
                                     <constraint firstAttribute="height" constant="250" id="rBp-lt-ZNw"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudDocs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgN-Sm-jkn">
+                                <rect key="frame" x="130" y="810" width="154.5" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2TB-dh-Asu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="KgN-Sm-jkn" firstAttribute="centerX" secondItem="jC2-Kb-Ihc" secondAttribute="centerX" id="7O7-rT-SrJ"/>
                             <constraint firstItem="e8D-Qw-r0I" firstAttribute="centerX" secondItem="jC2-Kb-Ihc" secondAttribute="centerX" id="Ld1-rV-K1A"/>
                             <constraint firstAttribute="bottom" secondItem="Me9-JX-DhT" secondAttribute="bottom" id="Mcp-0Q-Gkb"/>
                             <constraint firstItem="Me9-JX-DhT" firstAttribute="leading" secondItem="2TB-dh-Asu" secondAttribute="leading" id="VFf-p4-5f3"/>
                             <constraint firstItem="e8D-Qw-r0I" firstAttribute="centerY" secondItem="jC2-Kb-Ihc" secondAttribute="centerY" id="m9G-LI-WIg"/>
+                            <constraint firstItem="2TB-dh-Asu" firstAttribute="bottom" secondItem="KgN-Sm-jkn" secondAttribute="bottom" constant="16" id="qFf-CC-DJ3"/>
                             <constraint firstItem="Me9-JX-DhT" firstAttribute="trailing" secondItem="2TB-dh-Asu" secondAttribute="trailing" id="vfV-Xk-JKe"/>
                             <constraint firstItem="Me9-JX-DhT" firstAttribute="top" secondItem="jC2-Kb-Ihc" secondAttribute="top" id="ykd-MW-Cqz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lVe-iy-fHD"/>
                     <connections>
+                        <outlet property="appLabel" destination="KgN-Sm-jkn" id="Mo1-U9-5dT"/>
+                        <outlet property="logoImageView" destination="e8D-Qw-r0I" id="fCo-5P-Acp"/>
                         <segue destination="AZs-Rm-LGu" kind="presentation" identifier="LaunchToWelcome" modalPresentationStyle="fullScreen" id="f5B-Tk-BSH"/>
                         <segue destination="ib5-58-Ph5" kind="presentation" identifier="LaunchToPasscode" modalPresentationStyle="fullScreen" id="ex6-yL-orb"/>
                     </connections>
@@ -1347,8 +1357,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Dk-qp-0xY"/>
-        <segue reference="9Pg-5W-ylh"/>
+        <segue reference="Tcu-LK-gLn"/>
+        <segue reference="ex6-yL-orb"/>
         <segue reference="f5B-Tk-BSH"/>
     </inferredMetricsTieBreakers>
     <resources>
