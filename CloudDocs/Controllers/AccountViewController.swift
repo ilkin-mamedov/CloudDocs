@@ -14,11 +14,12 @@ class AccountViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let actions = ["Edit photo".localized(), "Edit name".localized(), "Edit e-mail address".localized(), "Edit password".localized(), "Delete account".localized()]
+    var actions = ["Edit photo".localized(), "Edit name".localized(), "Edit e-mail address".localized(), "Edit password".localized(), "Delete account".localized()]
     
     var email = ""
     var password = ""
     var isPremium = false
+    var subscriptionValidUntil = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,14 @@ class AccountViewController: UIViewController {
         
         ref.child("users").child(user!.uid).child("isPremium").observe(.value, with: { snapshot in
             self.isPremium = snapshot.value as! Bool
+            if self.isPremium {
+                self.actions.append("Cancel subscription".localized())
+            }
+            self.tableView.reloadData()
+        })
+        
+        ref.child("users").child(user!.uid).child("subscriptionValidUntil").observe(.value, with: { snapshot in
+            self.subscriptionValidUntil = snapshot.value as? String ?? ""
             self.tableView.reloadData()
         })
         
@@ -106,6 +115,14 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.textColor = .systemRed
                 cell.detailTextLabel?.textColor = .systemGray
                 cell.detailTextLabel?.text = "Re-authentication required".localized()
+            }
+            
+            if isPremium {
+                if indexPath.row == 5 {
+                    cell.textLabel?.textColor = .systemRed
+                    cell.detailTextLabel?.textColor = .systemGray
+                    cell.detailTextLabel?.text = "\("Your subscription is valid until".localized()) \(subscriptionValidUntil)"
+                }
             }
             
             return cell
@@ -275,11 +292,29 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
                 deleteAlert.addAction(cancel)
                 
                 present(deleteAlert, animated: true, completion: nil)
+            } else if indexPath.row == 5 {
+                let alert = UIAlertController(title: .none, message: .none, preferredStyle: .actionSheet)
+                
+                alert.view.tintColor = UIColor(named: "AccentColor")
+                
+                let cancelSubscription = UIAlertAction(title: "Cancel subscription".localized(), style: .destructive) { action in
+                    self.ref.child("users").child(self.user!.uid).child("isPremium").setValue(false)
+                    self.ref.child("users").child(self.user!.uid).child("subscriptionValidUntil").removeValue()
+                    self.actions.removeLast()
+                    tableView.reloadData()
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel".localized(), style: .cancel) { _ in
+                    alert.self.dismiss(animated: true)
+                }
+                
+                alert.addAction(cancelSubscription)
+                alert.addAction(cancel)
+                
+                present(alert, animated: true, completion: nil)
             } else {
                 signIn()
             }
-        } else {
-            
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

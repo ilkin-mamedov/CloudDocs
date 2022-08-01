@@ -70,14 +70,12 @@ class HomeViewController: UIViewController {
         accountButton.button.addTarget(self, action: #selector(accountPressed), for: .touchUpInside)
         
         ref.child("users").child(user!.uid).child("isPremium").observe(.value, with: { snapshot in
-            self.isPremium = snapshot.value as! Bool
-            if !self.isPremium {
+            self.isPremium = snapshot.value as? Bool ?? false
+            if self.isPremium {
+                self.navigationItem.leftBarButtonItems = []
+            } else {
                 self.navigationItem.leftBarButtonItems = [UIBarButtonItem(title: "Try Premium".localized(), image: nil, primaryAction: UIAction(handler: { action in
-                    if !self.isPremium {
-                        self.performSegue(withIdentifier: "HomeToPremium", sender: self)
-                    } else {
-                        self.navigationItem.leftBarButtonItems = []
-                    }
+                    self.performSegue(withIdentifier: "HomeToPremium", sender: self)
                 }), menu: nil)]
             }
         })

@@ -1,4 +1,9 @@
 import UIKit
+import FirebaseCore
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
+import SPAlert
 
 class PremiumViewController: UIViewController {
 
@@ -9,11 +14,19 @@ class PremiumViewController: UIViewController {
         "Saving scan of document".localized(),
     ]
     
+    var ref: DatabaseReference!
+    var storageRef: StorageReference!
+    var user: User?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var subscribeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
+        storageRef = Storage.storage().reference()
+        user = Auth.auth().currentUser
         
         subscribeButton.layer.cornerRadius = 5
         
@@ -27,17 +40,13 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func subscribePressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Coming Soon".localized(), message: "This feature is currently not available.".localized(), preferredStyle: .alert)
-        
-        alert.view.tintColor = UIColor(named: "AccentColor")
-        
-        let cancel = UIAlertAction(title: "OK", style: .cancel) { _ in
-            alert.self.dismiss(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        
-        present(alert, animated: true, completion: nil)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let subscriptionValidUntil = dateFormatter.string(from: Calendar.current.date(byAdding: .month, value: +1, to: Date())!)
+        ref.child("users").child(user!.uid).child("isPremium").setValue(true)
+        ref.child("users").child(user!.uid).child("subscriptionValidUntil").setValue(subscriptionValidUntil)
+        SPAlert.present(title: "You are subscribed!".localized(), preset: .done)
+        dismiss(animated: true)
     }
 }
 
